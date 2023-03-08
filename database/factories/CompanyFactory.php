@@ -15,12 +15,12 @@ class CompanyFactory extends Factory
     {
         return [
 
-            'name' => $this->faker->company,
-            'address' => $this->faker->address,
+            'name' => $this->faker->lastName,
+            'address' => $this->faker->streetName,
             'address2' => $this->faker->buildingNumber,
             'city' => $this->faker->city,
             'district' => $this->faker->city,
-            'country' => $this->faker->country,
+            'country' => "VietNam",
             'zipcode' =>$this->faker->postcode,
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->email,
