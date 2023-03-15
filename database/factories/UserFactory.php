@@ -28,7 +28,7 @@ class UserFactory extends Factory
             "position"=> $this->faker->jobTitle,
             "gender"=> $this->faker->boolean,
             "city"=> $this->faker->city,
-            "company_id"=> Company::query()->inRandomOrder()->value('id'),
+            "company_id"=> Company::query()->inRandomOrder()->value('id'),S
 
         ];
     }

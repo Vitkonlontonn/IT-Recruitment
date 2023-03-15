@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('position')->nullable();
             $table->boolean('gender')->default(false);
             $table->string('city');
-            $table->foreignId('company_id')->constraint();
+            $table->foreignId('company_id')->constrained();
 
             $table->timestamps();
         });
