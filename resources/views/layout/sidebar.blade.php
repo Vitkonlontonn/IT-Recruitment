@@ -36,10 +36,10 @@
                                 <li class="side-nav-title side-nav-item">Navigation</li>
 
                                 <li class="side-nav-item">
-                                    <a href="javascript: void(0);" class="side-nav-link">
+                                    <a href="{{route('admin.users.index')}}" class="side-nav-link">
                                         <i class="uil-home-alt"></i>
                                         <span class="badge badge-success float-right">4</span>
-                                        <span> Dashboards </span>
+                                        <span> Users </span>
                                     </a>
                                     <ul class="side-nav-second-level mm-collapse" aria-expanded="false">
                                         <li>
@@ -56,25 +56,8 @@
                                         </li>
                                     </ul>
                                 </li>
-
-
                             </ul>
-
-                            <!-- Help Box -->
-                            <div class="help-box text-white text-center">
-                                <a href="javascript: void(0);" class="float-right close-btn text-white">
-                                    <i class="mdi mdi-close"></i>
-                                </a>
-                                <img src="assets/images/help-icon.svg" height="90" alt="Helper Icon Image">
-                                <h5 class="mt-3">Unlimited Access</h5>
-                                <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
-                                <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Upgrade</a>
-                            </div>
-                            <!-- end Help Box -->
-                            <!-- End Sidebar -->
-
                             <div class="clearfix"></div>
-
                         </div>
                     </div>
                 </div>

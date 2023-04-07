@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRoleEnum;
+use App\Http\Requests\Auth\RegisteringRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,31 +24,45 @@ class AuthController extends Controller
 
     public function callback($provider)
     {
+        $checkExists =true;
         $data = Socialite::driver($provider)->user();
+        $user = User::query()
+            ->where('email', $data->getEmail())
+            ->first();
 
-        $user = User::firstOrCreate([
-                'email' => $data->getEmail()
-        ], [
-                'name' => $data->getName(),
-                'avatar' => $data->getAvatar(),
-            ]
-        );
+        if (is_null($user)) {
+            $user = new User();
+            $user->email = $data->getEmail();
+            $checkExists=false;
+        }
+        $user->name = $data->getName();
+        $user->avatar = $data->getAvatar();
+        $user->save();
 
         Auth::login($user);
+
+        if ($checkExists)
+        {
+            $role = strtolower(UserRoleEnum::getKeys($user->role)[0]);
+            return redirect()->route($role.'.welcome');
+        }
         return redirect()->route('register');
+
+
     }
 
-    public function registering (Request $request)
+    public function registering(RegisteringRequest $request)
     {
         $password = Hash::make($request->password);
-        if(auth()->check()) //nếu đã có Auth
+        $role =$request->role;
+        if (auth()->check()) //nếu đã có Auth
         {
-           User::where ('id', auth()->user()->id)
-               ->update([
-                   'password' => $password,
-               ]);
-        }
-        else { //nếu chưa thì vẫn dùng Auth đăng nhập
+            User::where('id', auth()->user()->id)
+                ->update([
+                    'password' => $password,
+                    'role'=>$role,
+                ]);
+        } else { //nếu chưa thì vẫn dùng Auth đăng nhập
             $user = User::create([
                 'password' => $password,
                 'name' => $request->name,

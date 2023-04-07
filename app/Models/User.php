@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\UserRoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,4 +22,24 @@ class User extends Model implements AuthenticatableContract
         'avatar',
         'password',
     ];
+
+    public function company()
+    {
+        return $this ->belongsTo(Company::class);
+    }
+    public function getRoleNameAttribute()
+    {
+        return UserRoleEnum::getKeys($this->role)[0];
+    }
+    public function getGenderNameAttribute()
+    {
+        if ($this->gender===0)
+        {
+            return "Female";
+        }
+        return "Male";
+
+    }
+
+
 }

@@ -62,7 +62,7 @@
                             </div>
                             {{--social-login--}}
                             <div class="text-center mt-4">
-                                <p class="text-muted font-16">Sign in with</p>
+                                <p class="text-muted font-16">Log in with</p>
                                 <ul class="social-list list-inline mt-3">
 
                                     <li class="list-inline-item">

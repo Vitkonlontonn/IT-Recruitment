@@ -4,7 +4,7 @@
 </html>
 <head>
     <meta charset="utf-8">
-    <title>Hyper - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>{{config('app.name')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
@@ -14,8 +14,9 @@
 
     <!-- App css -->
     <link href="{{asset ('css/icons.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/app-creative.min.css')}}" rel="stylesheet" type="text/css" id="light-style" >
-    <link href="{{asset('css/app-creative-dark.min.css')}}" rel="stylesheet" type="text/css" id="dark-style" disabled="disabled">
+    <link href="{{asset('css/app-creative.min.css')}}" rel="stylesheet" type="text/css" id="light-style">
+    <link href="{{asset('css/app-creative-dark.min.css')}}" rel="stylesheet" type="text/css" id="dark-style"
+          disabled="disabled">
 
 </head>
 <body class=""
@@ -24,7 +25,7 @@
 <!-- Begin page -->
 <div class="wrapper mm-active">
     <!-- ========== Left Sidebar Start ========== -->
-        @include('layout.sidebar')
+    @include('layout.sidebar')
     <!-- Left Sidebar End -->
 
     <!-- ============================================================== -->
@@ -34,18 +35,22 @@
     <div class="content-page">
         <div class="content">
             <!-- Topbar Start -->
-@include('layout.topbar')
+            @include('layout.topbar')
             <!-- end Topbar -->
 
             <!-- Start Content-->
-    @yield('content')
+            <div class="container-fluid">
+
+                @yield('content')
+            </div>
+
             <!-- container -->
 
         </div>
         <!-- content -->
 
         <!-- Footer Start -->
-@include('layout.footer')
+        @include('layout.footer')
         <!-- end Footer -->
 
     </div>
@@ -62,8 +67,7 @@
 <!-- bundle -->
 <script src="{{asset('js/vendor.min.js')}}"></script>
 <script src="{{asset('js/app.min.js')}}"></script>
-
-
+@stack('js')
 
 </body>
 </html>

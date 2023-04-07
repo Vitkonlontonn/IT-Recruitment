@@ -38,9 +38,18 @@
                                 minute </p>
                         </div>
 
-                        <form action="{{route ('registering')}}" method="">
+                        <form action="{{route ('registering')}}" method="post">
                             @csrf
                             @auth
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="form-group">
                                     <label for="fullname">Full Name</label>
                                     <input class="form-control" type="text" id="fullname" placeholder="Enter your name"
@@ -56,17 +65,16 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label >Avatar: </label>
+                                    <label>Avatar: </label>
                                     <img src="{{auth()->user()->avatar}}" class="rounded-circle" width="40">
                                 </div>
-
 
                             @endauth
                             @guest
                                 <div class="form-group">
                                     <label for="fullname">Full Name</label>
                                     <input class="form-control" type="text" id="fullname" placeholder="Enter your name"
-                                           required name ="name">
+                                           required name="name">
                                 </div>
 
                                 <div class="form-group">
@@ -87,6 +95,18 @@
                                             <span class="password-eye"></span>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-2">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="applicant" name="role" class="custom-control-input"
+                                           value="1" checked="checked">
+                                    <label class="custom-control-label" for="customRadio3">Applicant</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="hr" name="role" class="custom-control-input" value="2">
+                                    <label class="custom-control-label" for="customRadio4">HR</label>
                                 </div>
                             </div>
 
