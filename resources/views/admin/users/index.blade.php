@@ -77,6 +77,7 @@
                             <th>Position</th>
                             <th>City</th>
                             <th>Company</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -113,6 +114,13 @@
                                 </td>
                                 <td>
                                     {{optional($each->company)->name}}
+                                </td>
+                                <td>
+                                    <form action="{{route("admin.$table.destroy", $each->id)}}" method="post" >
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
