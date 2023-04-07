@@ -12,25 +12,57 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <form class="form-horizontal">
+                    <form class="form-inline" id="form-filter">
                         <div class="form-group">
-                            <label for="role" >Role</label>
-                                <div class="col-3">
-                                    <select class="form-control select-filter" name="role" id="role">
+                            <label for="role">Role</label>
+                            <div class="col-3">
+                                <select class="form-control select-filter" name="role" id="role">
+                                    <option selected>All</option>
+                                    @foreach($roles as $role=>$value)
+                                        <option value="{{$value}}"
+                                                @if((string)$value===$selectedRole) selected @endif
+                                        >
+                                            {{$role}}
+                                        </option>
 
-                                        <option selected>All</option>
-                                        @foreach($roles as $role=>$value)
-                                            <option value="{{$value}}">
-                                                {{$role}}
-                                            </option>
-
-                                        @endforeach
-                                    </select>
-                                </div>
-
-
-
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="role">Position</label>
+                            <div class="col-3">
+                                <select class="form-control select-filter" name="city" id="city">
+                                    <option selected>All</option>
+                                    @foreach($cities as $city)
+                                        <option
+                                            @if($city===$selectedCity) selected @endif
+                                        >
+                                            {{$city}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role">Company</label>
+                            <div class="col-3">
+                                <select class="form-control select-filter" name="company" id="company">
+                                    <option selected>All</option>
+                                    @foreach($companies as $company)
+                                        <option value="{{$company->id}}"
+                                                @if($company->id==$selectedCompany) selected @endif
+                                        >
+                                            {{$company->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+
                     </form>
                 </div>
 
@@ -74,7 +106,7 @@
                                     {{$each->getRoleNameAttribute()}}
                                 </td>
                                 <td>
-
+                                    {{$each->position}}
                                 </td>
                                 <td>
                                     {{$each->city}}
@@ -98,4 +130,12 @@
 
     </div>
 @endsection
-@push('')
+@push('js')
+    <script>
+        $(document).ready(function () {
+            $(".select-filter").change(function () {
+                $("#form-filter").submit();
+            });
+        });
+    </script>
+@endpush

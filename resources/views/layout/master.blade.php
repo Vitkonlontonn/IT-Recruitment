@@ -69,5 +69,6 @@
 <script src="{{asset('js/app.min.js')}}"></script>
 @stack('js')
 
+
 </body>
 </html>
