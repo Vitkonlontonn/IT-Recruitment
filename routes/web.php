@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
+Route::get('/test', [TestController::class, 'test']);
 
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');

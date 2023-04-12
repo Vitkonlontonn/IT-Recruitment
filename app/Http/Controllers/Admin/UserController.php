@@ -20,10 +20,8 @@ class UserController extends Controller
         $this->model = User::query();
         $this->table = (new User())->getTable();
 
-
         View::share('title', ucwords($this->table));
         View::share('table', $this->table);
-
     }
 
     public function index(Request $request)

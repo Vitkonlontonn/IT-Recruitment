@@ -33,20 +33,20 @@
                             <!--- Sidemenu -->
                             <ul class="metismenu side-nav mm-show">
 
-                                <li class="side-nav-title side-nav-item">Navigation</li>
+                                <li class="side-nav-title side-nav-item">Manage</li>
 
                                 <li class="side-nav-item">
-                                    <a href="{{route('admin.users.index')}}" class="side-nav-link">
+                                    <a href="javascript: void(0);" class="side-nav-link">
                                         <i class="uil-home-alt"></i>
                                         <span class="badge badge-success float-right">4</span>
-                                        <span> Users </span>
+                                        <span> Manage </span>
                                     </a>
                                     <ul class="side-nav-second-level mm-collapse" aria-expanded="false">
                                         <li>
-                                            <a href="dashboard-analytics.html">Analytics</a>
+                                            <a href="{{route('admin.users.index')}}">Users</a>
                                         </li>
                                         <li>
-                                            <a href="dashboard-crm.html">CRM</a>
+                                            <a href="{{route('admin.posts.index')}}">Posts</a>
                                         </li>
                                         <li>
                                             <a href="index.html">Ecommerce</a>
