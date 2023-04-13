@@ -37,52 +37,62 @@
                             <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a
                                 minute </p>
                         </div>
-
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{route ('registering')}}" method="post">
                             @csrf
-                            @auth
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <div class="form-group">
-                                    <label for="fullname">Full Name</label>
-                                    <input class="form-control" type="text" id="fullname" placeholder="Enter your name"
-                                           required name="name"
-                                           disabled value="{{auth()->user()->name}}">
-                                </div>
+                            {{--                            @auth--}}
+                            {{--                                @if ($errors->any())--}}
+                            {{--                                    <div class="alert alert-danger">--}}
+                            {{--                                        <ul>--}}
+                            {{--                                            @foreach ($errors->all() as $error)--}}
+                            {{--                                                <li>{{ $error }}</li>--}}
+                            {{--                                            @endforeach--}}
+                            {{--                                        </ul>--}}
+                            {{--                                    </div>--}}
+                            {{--                                @endif--}}
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <label for="fullname">Full Name</label>--}}
+                            {{--                                    <input class="form-control" type="text" id="fullname" placeholder="Enter your name"--}}
+                            {{--                                           required name="name"--}}
+                            {{--                                           disabled value="{{auth()->user()->name}}">--}}
+                            {{--                                </div>--}}
 
-                                <div class="form-group">
-                                    <label for="emailaddress">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" required
-                                           placeholder="Enter your email" name="email"
-                                           value="{{auth()->user()->email }}">
-                                </div>
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <label for="emailaddress">Email address</label>--}}
+                            {{--                                    <input class="form-control" type="email" id="emailaddress" required--}}
+                            {{--                                           placeholder="Enter your email" name="email"--}}
+                            {{--                                           value="{{auth()->user()->email }}">--}}
+                            {{--                                </div>--}}
 
-                                <div class="form-group">
-                                    <label>Avatar: </label>
-                                    <img src="{{auth()->user()->avatar}}" class="rounded-circle" width="40">
-                                </div>
+                            {{--                                <div class="form-group">--}}
+                            {{--                                    <label>Avatar: </label>--}}
+                            {{--                                    <img src="{{auth()->user()->avatar}}" class="rounded-circle" width="40">--}}
+                            {{--                                </div>--}}
 
-                            @endauth
-                            @guest
-                                <div class="form-group">
-                                    <label for="fullname">Full Name</label>
-                                    <input class="form-control" type="text" id="fullname" placeholder="Enter your name"
-                                           required name="name">
-                                </div>
+                            {{--                            @endauth--}}
+                            {{--                            @guest--}}
 
-                                <div class="form-group">
-                                    <label for="emailaddress">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" required
-                                           placeholder="Enter your email" name="email">
-                                </div>
-                            @endguest
+
+                            <div class="form-group">
+                                <label for="fullname">Full Name</label>
+                                <input class="form-control" type="text" id="fullname" placeholder="Enter your name"
+                                       required name="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emailaddress">Email address</label>
+                                <input class="form-control" type="email" id="emailaddress" required
+                                       placeholder="Enter your email" name="email">
+                            </div>
+                            {{--                            @endguest--}}
 
 
                             <div class="form-group">
@@ -100,12 +110,12 @@
 
                             <div class="mt-2">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="applicant" name="role" class="custom-control-input"
+                                    <input type="radio" id="applicant" name="role"
                                            value="1" checked="checked">
                                     <label class="custom-control-label" for="customRadio3">Applicant</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="hr" name="role" class="custom-control-input" value="2">
+                                    <input type="radio" id="hr" name="role" value="2">
                                     <label class="custom-control-label" for="customRadio4">HR</label>
                                 </div>
                             </div>
@@ -130,7 +140,7 @@
 
                 <div class="row mt-3">
                     <div class="col-12 text-center">
-                        <p class="text-muted">Already have account? <a href=""
+                        <p class="text-muted">Already have account? <a href="{{route('login')}}"
                                                                        class="text-muted ml-1"><b>Log In</b></a></p>
                     </div> <!-- end col-->
                 </div>
@@ -145,7 +155,7 @@
 <!-- end page -->
 
 <footer class="footer footer-alt">
-    2018 - 2020 © Hyper - Coderthemes.com
+    2023 © - ITRecuiter.com
 </footer>
 
 <!-- bundle -->

@@ -4,6 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use App\Enums\UserRoleEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class RegisteringRequest extends FormRequest
 {
@@ -23,12 +24,9 @@ class RegisteringRequest extends FormRequest
                 'min:0',
                 'max:255',
             ],
-            role => [
+            'role' => [
                 'required',
-                Rule::in([
-                    UserRoleEnum.APPLICANT,
-                    UserRoleEnum::HR,
-                ])
+                Rule::in(UserRoleEnum::getRolesForRegister()),
             ]]
             ;
     }
