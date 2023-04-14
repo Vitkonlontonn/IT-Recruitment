@@ -6,7 +6,11 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/test', [TestController::class, 'test']);
 
+
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginning'])->name('loginning');
+
+
 Route::get('/register', array(AuthController::class, 'register'))->name('register');
 Route::post('/register', [AuthController::class, 'registering'])->name('registering');
 

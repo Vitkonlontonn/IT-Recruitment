@@ -30,18 +30,18 @@
                             <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
                         </div>
 
-                        <form action="#">
-
+                        <form action="{{route('loginning')}}" method="post">
+                            @csrf
                             <div class="form-group">
                                 <label for="emailaddress">Email address</label>
-                                <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                <input class="form-control" type="email"  id="emailaddress" required="" placeholder="Enter your email" name="email">
                             </div>
 
                             <div class="form-group">
                                 <a href="pages-recoverpw.html" class="text-muted float-right"><small>Forgot your password?</small></a>
-                                <label for="password">Password</label>
+                                <label  for="password">Password</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                                    <input type="password" id="password" class="form-control" placeholder="Enter your password" name="password">
                                     <div class="input-group-append" data-password="false">
                                         <div class="input-group-text">
                                             <span class="password-eye" ></span>

@@ -19,9 +19,37 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+    public function loginning(Request $request)
+    {
+
+
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+
+            return redirect()->route('welcome')
+                ->withSuccess('Signed in');
+
+
+        }
+
+
+        return redirect()->route('login')->withSuccess('Login details are not valid');
+
+
+    }
+    public function dashboard()
+    {
+        if(Auth::check()){
+            return view('dashboard');
+        }
+
+        return redirect("login")->withSuccess('You are not allowed to access');
+    }
+
     public function register()
     {
         return view('auth.register');
+
     }
 
     public function callback($provider)
