@@ -55,7 +55,8 @@ class PostImport implements ToArray, WithHeadingRow
                     File::create([
                         'post_id' => $post->id,
                         'link' => $link,
-                        'type' => FileTypeEnum::JD,]);
+                        'type' => FileTypeEnum::JD,
+                        ]);
 
                 } catch (\Throwable $e) {
                     dd($each);
