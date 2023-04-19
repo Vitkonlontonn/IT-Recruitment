@@ -21,10 +21,16 @@ class AuthController extends Controller
 
     public function loginning(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
 
-            return redirect()->route('applicant.welcome')
+        $credentials = $request->only('email', 'password');
+
+
+        if (Auth::attempt($credentials)) {
+            $role = auth()->user()->role;
+            $role= UserRoleEnum::getKey($role);
+            $role= strtolower($role);
+//            dd($role);
+            return redirect()->route($role.'.welcome')
                 ->withSuccess('Signed in');
         }
 
