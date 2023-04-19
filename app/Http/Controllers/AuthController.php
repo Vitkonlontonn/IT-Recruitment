@@ -21,15 +21,11 @@ class AuthController extends Controller
 
     public function loginning(Request $request)
     {
-
-
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
 
-            return redirect()->route('welcome')
+            return redirect()->route('applicant.welcome')
                 ->withSuccess('Signed in');
-
-
         }
 
 
@@ -105,7 +101,7 @@ class AuthController extends Controller
             ]);
 
             Auth::login($user);
-            return redirect()->route('applicant.welcome');
+            return redirect()->route($role.'.welcome');
 
         }
         else {

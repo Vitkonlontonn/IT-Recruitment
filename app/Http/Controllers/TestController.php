@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\View;
 
 
 class TestController extends Controller
-{private object $model;
+{
+    private object $model;
     private string $table;
 
     public function __construct()
@@ -24,22 +25,22 @@ class TestController extends Controller
     {
         // return DB::getSchemaBuilder()->getColumnListing('companies');
         $companyName = 'Da cap';
-        $language    = 'PHP, Java';
-        $city        = 'HN';
-        $link        = 'abc';
+        $language = 'PHP, Java';
+        $city = 'HN';
+        $link = 'abc';
 
         $company = Company::firstOrCreate([
             'name' => $companyName,
         ], [
-            'city'    => $city,
+            'city' => $city,
             'country' => 'Vietnam',
         ]);
 
         $post = Post::create([
-            'job_title'  => $language,
+            'job_title' => $language,
             'company_id' => $company->id,
-            'city'       => $city,
-            'status'     => PostStatusEnum::ADMIN_APPROVED,
+            'city' => $city,
+            'status' => PostStatusEnum::ADMIN_APPROVED,
         ]);
 
         $languages = explode(',', $language);

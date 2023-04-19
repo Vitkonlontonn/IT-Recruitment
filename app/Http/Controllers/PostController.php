@@ -23,22 +23,21 @@ class PostController extends Controller
 
     public function index()
     {
-        $data=  $this->model->paginate();
+        $data = $this->model->paginate();
         foreach ($data as $each) {
 
             $each->currency_salary = $each->curent_salary_code;
             //Ghi đè attribute Status(enum) cũ bằng Status_name(string) (từ file Model/Post)
             //status_name không hề đc khai báo, Laravel tự động lấy theo tên function mà mình đặt
             //=> không dc đặt linh tinh
-          $each->status = $each->status_name;
+            $each->status = $each->status_name;
 
         }
-return $data;
-//        return response()->json([
-//            'success'=>true,
-//            'data'=>$data->getCollection(),
-//            'pagination'=>$data->links(),
-//        ]);
+        return response()->json([
+            'success' => true,
+            'data' => $data->getCollection(),
+            'pagination' => $data->linkCollection()
+        ]);
 
     }
 

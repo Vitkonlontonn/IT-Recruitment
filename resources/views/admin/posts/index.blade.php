@@ -72,13 +72,14 @@
                             .append($('<td>').append(each.is_pinned ? 'x':' '))
                             .append($('<td>').append(each.created_at))
                         );
-                        //
+                        // //renderPagination
                         // response.pagination.forEach(function (each){
                         //     $('#pagination').append($('<li>'))
                         //         .append(`<a className="page-link ${each.active ? 'active' : ''}" href="${each.url}">
                         //     ${each.label}
                         //     </a>`);
                         // })
+
                     });
 
 
