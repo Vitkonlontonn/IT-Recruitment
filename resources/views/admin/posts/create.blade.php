@@ -3,16 +3,23 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 @endpush
 
+@push('css')
+    <style>
+        .error {
+            color: red
+        }
+    </style>
+@endpush
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <a href="{{route('admin.posts.create')}}" class="btn btn-primary">Add Post</a>
-                </div>
+
                 <h4 class="page-title">Posts</h4>
                 <div class="card-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="{{route('admin.posts.store')}}" method="post"
+                          id="form-create">
+                        @csrf
                         <div class="form-group">
                             <label>Company(*)</label>
                             <select class="form-control" name="company" id="select-company">
@@ -21,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label>Language(*)</label>
-                            <select class="form-control" multiple name="language" id="select-language">
+                            <select class="form-control" multiple name="language[]" id="select-language">
 
                             </select>
                         </div>
@@ -63,7 +70,7 @@
                             </div>
                             <div class="form-group col-4">
                                 <label>Requirement</label>
-                                <textarea  name="requirement" class="form-control"></textarea>
+                                <textarea name="requirement" class="form-control"></textarea>
                             </div>
                             <div class="form-group col-4">
                                 <label>Number Applicants</label>
@@ -84,9 +91,16 @@
 
                             <div class="form-group col-6">
                                 <label>Job Title</label>
-                                <input type="text" name="job_title" class="form-control">
+                                <input type="text" name="job_title" class="form-control" id="job_title">
 
                             </div>
+                            <div class="form-group col-12">
+                                <div class="form-group col-6 ">
+                                    <button class='btn btn-success' id="btn-submit">Create</button>
+                                </div>
+                            </div>
+
+
                         </div>
 
 
@@ -98,15 +112,30 @@
 @endsection
 @push('js')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
 
     <script>
+        async function generateJobTitle() {
+            let languages = [];
+            const selectedLanguages = $("#select-language :selected").map(function (i, v) {
+                languages.push($(v).text());
+            });
+            languages = languages.join(', ')
+            const city = $("#select-city").val();
+            const company = $("#select-company :selected").val().trim();
+
+
+            $("#job_title").val(`[${city}] [${languages}] [${company}]`);
+        }
+
+
         async function loadDistrict() {
             $('#select-district').empty();
             const path = $("#select-city option:selected").data('path');
             const response = await fetch('{{ asset('locations/') }}' + path);
             const districts = await response.json();
             $.each(districts.district, function (index, each) {
-                if (each.pre === 'Quận' || each.pre === 'Huyện') {
+                if (each.pre === 'Quận' || each.pre === 'Huyện' || each.pre === 'Thị xã') {
                     $("#select-district").append(`
                     <option>
                         ${each.name}
@@ -114,6 +143,8 @@
                 }
             })
         }
+
+
 
         $(document).ready(async function () {
             $("#select-city").select2();
@@ -147,7 +178,7 @@
                             results: $.map(data, function (item) {
                                 return {
                                     text: item.name,
-                                    id: item.id
+                                    id: item.name
                                 }
                             })
                         };
@@ -175,7 +206,15 @@
                     }
                 }
             });
+
+            $(document).on('change', '#select-language, #select-company, #select-city', function () {
+                generateJobTitle();
+            });
+
+
+
         });
+
+
     </script>
 @endpush
-

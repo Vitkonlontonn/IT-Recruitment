@@ -10,7 +10,7 @@
     <meta content="Coderthemes" name="author">
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-
+    @stack('css')
 
     <!-- App css -->
     <link href="{{asset ('css/icons.min.css')}}" rel="stylesheet" type="text/css">

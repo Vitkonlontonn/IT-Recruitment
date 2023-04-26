@@ -107,7 +107,7 @@ class AuthController extends Controller
             ]);
 
             Auth::login($user);
-            return redirect()->route($role.'.welcome');
+            return redirect()->route('applicant.welcome');
 
         }
         else {
