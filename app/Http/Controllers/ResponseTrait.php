@@ -3,14 +3,16 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
+
 trait ResponseTrait
 {
-    public function successResponse($data, $message)
+    public function successResponse($data, $message=''): JsonResponse
     {
         return response()->json([
             'success' => true,
             'data' => $data,
-            'pagination' => $message,
+            'message' => $message,
         ]);
     }
     public function errorResponse( $message)

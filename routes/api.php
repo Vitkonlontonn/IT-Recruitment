@@ -15,7 +15,6 @@ Route::get('/posts',[PostController::class, 'index'])->name('posts');
 Route::get('/companies',[CompanyController::class, 'index'])->name('companies');
 Route::get('/languages',[LanguageController::class, 'index'])->name('languages');
 
-Route::post('/companies/check/{companyName?}',[CompanyController::class, 'check'])->name('companies.check');
-
+Route::get('/companies/check/{companyName?}', [CompanyController::class, 'check'])->name('companies.check');
 
 

@@ -13,7 +13,8 @@ class StoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
+        //Chú ý cái này nhé
     }
 
     /**
@@ -31,6 +32,7 @@ class StoreRequest extends FormRequest
             'language' => [
                 'required',
                 'array',
+                'filled', //Bắt buộc phải điền đủ
             ],
             'district' => [
                 'string',
