@@ -51,7 +51,7 @@ class PostController extends Controller
 
     public function store(StoreRequest $request)
     {
-//        dd($request);
+        dd($request);
 
 //        $object = new Post();
 //        $object->fill($request->except('_token'));  //Cách 2: chỉ lấy những thằng đã được khai báo validate
@@ -59,7 +59,7 @@ class PostController extends Controller
 //
 //        return redirect()->route('admin.posts.index');
 
-        return $request->all();
+
     }
 
     public function importCsv(Request $request)
