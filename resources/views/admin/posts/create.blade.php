@@ -16,7 +16,7 @@
                           id="form-create">
                         @csrf
                         <div class="form-group">
-                            <label>Company</label>
+                            <label>Company (*)</label>
                             <select class="form-control" name="company" id='select-company'></select>
                         </div>
                         <div class="form-group">
@@ -29,7 +29,7 @@
                                 <select class="form-control" name="city" id='select-city'></select>
                             </div>
                             <div class="form-group col-6">
-                                <label>District</label>
+                                <label>District (*)</label>
                                 <select class="form-control select-district" name="district"
                                         id='select-district'></select>
                             </div>
@@ -154,20 +154,54 @@
         }
 
         //LOAD DISTRICT AFTER SELECT CITY
-        async function loadDistrict() {
-            $('#select-district').empty();
-            const path = $("#select-city option:selected").data('path');
+        async function loadDistrict(parent) {
+            parent.find(".select-district").empty();
+            const path = parent.find("option:selected").data('path');
             const response = await fetch('{{ asset('locations/') }}' + path);
             const districts = await response.json();
+            let string = '';
+            const selectedValue = $("#select-district").val();
             $.each(districts.district, function (index, each) {
-                if (each.pre === 'Quận' || each.pre === 'Huyện' || each.pre === 'Thị xã') {
-                    $("#select-district").append(`
-                    <option>
-                        ${each.name}
-                    </option>`);
+                if (each.pre === 'Quận' || each.pre === 'Huyện') {
+                    string += `<option`;
+                    if (selectedValue === each.name) {
+                        string += ` selected `;
+                    }
+                    string += `>${each.name}</option>`;
                 }
             })
+            parent.find(".select-district").append(string);
         }
+        {{--async function loadDistrict() {--}}
+        {{--    $('#select-district').empty();--}}
+        {{--    const path = $("#select-city option:selected").data('path');--}}
+        {{--    const response = await fetch('{{ asset('locations/') }}' + path);--}}
+        {{--    const districts = await response.json();--}}
+        {{--    $.each(districts.district, function (index, each) {--}}
+        {{--        if (each.pre === 'Quận' || each.pre === 'Huyện' || each.pre === 'Thị xã') {--}}
+        {{--            $("#select-district").append(`--}}
+        {{--            <option>--}}
+        {{--                ${each.name}--}}
+        {{--            </option>`);--}}
+
+        {{--        }--}}
+        {{--    })--}}
+        {{--}--}}
+
+        {{--async function loadDistrictModal() {--}}
+        {{--    $('#district').empty();--}}
+        {{--    const path = $("#city option:selected").data('path');--}}
+        {{--    const response = await fetch('{{ asset('locations/') }}' + path);--}}
+        {{--    const districts = await response.json();--}}
+        {{--    $.each(districts.district, function (index, each) {--}}
+        {{--        if (each.pre === 'Quận' || each.pre === 'Huyện' || each.pre === 'Thị xã') {--}}
+        {{--            $("#district").append(`--}}
+        {{--            <option>--}}
+        {{--                ${each.name}--}}
+        {{--            </option>`);--}}
+        {{--        }--}}
+        {{--    })--}}
+        {{--}--}}
 
         //CHECK COMPANY
         function checkCompany() {
@@ -182,6 +216,8 @@
                         $("#modal-company").modal("show");
                         $("#company").val($("#select-company").val());
                         $("#city").val($("#select-city").val()).trigger('change');
+
+                        // $("#district").val($("#select-district").val()).trigger('change');
                     }
                 }
             });
@@ -214,6 +250,7 @@
 
         $(document).ready(async function () {
             $("#select-city").select2();
+            $("#city").select2();
             const response = await fetch('{{ asset('locations/index.json') }}');
             const cities = await response.json();
             $.each(cities, function (index, each) {
@@ -221,13 +258,24 @@
                 <option data-path='${each.file_path}'>
                     ${index}
                 </option>`)
+                $("#city").append(`
+                <option data-path='${each.file_path}'>
+                    ${index}
+                </option>`)
             })
 
-            $("#select-city").change(function () {
-                loadDistrict();
+            $("#select-city, #city").change(function () {
+                loadDistrict($(this).parents('.select-location'));
             });
+
+
             $('#select-district').select2();
-            loadDistrict();
+            $('#district').select2();
+            await loadDistrict($('#select-city').parents('.select-location'));
+            // loadDistrict();
+            //
+            // $('#district').select2();
+            // loadDistrictModal();
 
             $("#select-company").select2({
                 tags: true,
