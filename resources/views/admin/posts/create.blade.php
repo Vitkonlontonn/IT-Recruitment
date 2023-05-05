@@ -5,6 +5,12 @@
         .error {
             color: red !important;
         }
+        input[data-switch]:checked + label:after {
+            left: 180px;
+        }
+        input[data-switch] + label {
+            width: 200px;
+        }
     </style>
 @endpush
 @section('content')
@@ -22,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label>Language (*)</label>
-                            <select class="form-control" multiple name="language[]" id='select-language'></select>
+                            <select class="form-control" multiple name="languages[]" id='select-language'></select>
                         </div>
                         <div class="form-row select-location">
                             <div class="form-group col-6">
@@ -45,7 +51,7 @@
                                 <input type="number" name="max_salary" class="form-control">
                             </div>
                             <div class="form-group col-4">
-                                <label>Max Salary</label>
+                                <label>Currency Salary</label>
                                 <select name="currency_salary" class="form-control">
                                     @foreach($currencies as $currency => $value)
                                         <option value="{{ $value }}">
@@ -64,6 +70,14 @@
                             <div class="form-group col-6">
                                 <label>Number Applicants</label>
                                 <input type="number" name="number_applicants" class="form-control">
+
+                                Remote    Part time
+                                <br>
+                                <input type="checkbox" id="remote" name="remoteable" checked data-switch="success"     >
+                                <label for="remote" data-on-label="Yes" data-off-label="No"></label>
+
+                                <input type="checkbox" name="part_time" id="can_parttime" checked data-switch="info">
+                                <label for="can_parttime" data-on-label="Yes" data-off-label="No"></label>
                             </div>
                         </div>
                         <div class="form-row">
@@ -79,12 +93,12 @@
                         <div class="form-row">
                             <div class="form-group col-6">
                                 <label>Title</label>
-                                <input type="text" name="title" class="form-control" id="title">
+                                <input type="text" name="job_title" class="form-control" id="title">
                             </div>
 
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-success" id="btn-submit">Create</button>
+                            <button  class="btn btn-success" id="btn-submit" >Create</button>
                         </div>
                     </form>
                 </div>
@@ -168,6 +182,18 @@
     <script src="{{asset('js/summernote-bs4.min.js')}}"></script>
 
     <script>
+
+        function successNotification(message)
+        {
+            $.toast({
+                heading: 'Success',
+                text: message,
+                showHideTransition: 'slide',
+                position: 'bottom-right',
+                icon: 'success'
+            })
+        }
+
         async function generateJobTitle() {
             let languages = [];
             $("#select-language :selected").map(function (i, v) {
@@ -217,14 +243,43 @@
                         $("#modal-company").modal("show");
                         $("#company").val($("#select-company").val());
                         $("#city").val($("#select-city").val()).trigger('change');
-
-                        // $("#district").val($("#select-district").val()).trigger('change');
                     }
                 }
             });
         }
 
+        function showError(errors) {
+            let string = '<ul>';
+            if (Array.isArray(errors)) {
+                errors.forEach(function (each) {
+                    each.forEach(function (error) {
+                        string += `<li>${error}</li>`;
+                    });
+                });
+            } else {
+                string += `<li>${errors}</li>`;
+            }
+            string += '</ul>';
+            $("#div-error").html(string);
+            $("#div-error").removeClass("d-none").show();
+            notifyError(string);
+        }
+
         function submitForm(type) {
+
+            $("#modal-company").modal("hide");
+            if(type=='company')
+            {
+                successNotification('Da them cong ty thanh cong')
+
+            }
+            if(type=='post')
+            {
+                successNotification('Da them bai dang thanh cong')
+
+            }
+
+
             const obj = $("#form-create-" + type);
             const formData = new FormData(obj[0]);
             $.ajax({
@@ -237,20 +292,25 @@
                 async: false,
                 cache: false,
                 enctype: 'multipart/form-data',
-                success: function () {
-                    $("#div-error").hide();
+                success: function (response) {
+
+                    if (response.success) {
+                        $("#div-error").hide();
+
+                        {{--window.location.href = '{{ route('admin.posts.index') }}';--}}
+                    } else {
+                        showError(response.message);
+                    }
                 },
                 error: function (response) {
-                    const errors = Object.values(response.responseJSON.errors);
-                    let string = '<ul>';
-                    errors.forEach(function (each) {
-                        each.forEach(function (error) {
-                            string += `<li>${error}</li>`;
-                        });
-                    });
-                    string += '</ul>';
-                    $("#div-error").html(string);
-                    $("#div-error").removeClass("d-none").show();
+                    let errors;
+                    if (response.responseJSON.errors) {
+                        errors = Object.values(response.responseJSON.errors);
+                        showError(errors);
+                    } else {
+                        errors = response.responseJSON.message;
+                        showError(errors);
+                    }
                 }
             });
         }
@@ -332,13 +392,14 @@
             });
 
             //Submit Form
+
             $("#form-create-post").validate({
                 rules: {
                     company: {
                         required: true
                     }
                 },
-                submitHandler: function (form) {
+                submitHandler: function () {
                     checkCompany();
                 }
             });

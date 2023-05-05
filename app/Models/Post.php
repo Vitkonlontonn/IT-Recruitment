@@ -18,12 +18,26 @@ class Post extends Model
         'job_title',
         'city',
         'status',
+        "district",
+        "remotable",
+        "can_parttime",
+        "min_salary",
+        "max_salary",
+        "currency_salary",
+        "requirement",
+        "start_date",
+        "end_date",
+        "number_applicants",
+        "status",
+        "is_pinned",
+        "slug",
     ];
     protected static function booted()
     {
         static::creating(static function ($object) {
             // $object->user_id = auth()->id();
             $object->user_id = 1;
+            $object->status = 1;
         });
     }
 

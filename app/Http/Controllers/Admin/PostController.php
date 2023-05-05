@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\ObjectLanguageTypeEnum;
 use App\Enums\PostCurrencySalaryEnum;
-use App\Enums\PostRemotableEnum;
+use App\Enums\PostRemoteableEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ResponseTrait;
 use App\Http\Controllers\SystemConfigController;
@@ -42,25 +42,59 @@ class PostController extends Controller
 
     public function create()
     {
-        $currencies=PostCurrencySalaryEnum::asArray();
+        $currencies = PostCurrencySalaryEnum::asArray();
 
         return view('admin.posts.create', [
-            'currencies'=>$currencies,
+            'currencies' => $currencies,
         ]);
     }
 
     public function store(StoreRequest $request)
     {
-        dd($request);
 
-//        $object = new Post();
-//        $object->fill($request->except('_token'));  //Cách 2: chỉ lấy những thằng đã được khai báo validate
-//        $object->save();
+        $object = new Post();
+
+        $name_company = $request['company'];
+        $company_id = DB::table('companies')->where('name', $name_company)->first()->id;
+        if ($request->has('remoteables')) {
+            $remoteable = 1;
+        } else {
+            $remoteable = 0;
+        }
+
+        if ($request->has('part_time')) {
+            $part_time = 1;
+        } else {
+            $part_time = 0;
+        }
+
+        $object->user_id = 1;
+        $object->job_title = $request['job_title'];
+        $object->city = $request['city'];
+        $object->district = $request['district'];
+        $object->part_time = $part_time;
+        $object->company_id = $company_id;
+        $object->min_salary = $request['min_salary'];
+        $object->max_salary = $request['max_salary'];
+        $object->currency_salary = $request['currency_salary'];
+        $object->requirement = $request['requirement'];
+        $object->start_date = $request['start_date'];
+        $object->end_date = $request['end_date'];
+        $object->save();
 //
-//        return redirect()->route('admin.posts.index');
+        $languages = $request->get('languages');
+        foreach ($languages as $language) {
+            ObjectLanguage::create([
+                'language_id' => $language,
+                'object_id' => $object->id,
+                'type' => ObjectLanguageTypeEnum::POST,
+            ]);
+        }
+        return redirect()->route('admin.posts.index');
 
 
     }
+
 
     public function importCsv(Request $request)
     {

@@ -29,11 +29,19 @@ class StoreRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'language' => [
+            'languages' => [
                 'required',
                 'array',
                 'filled', //Bắt buộc phải điền đủ
             ],
+            'remoteables'        => [
+
+                'array',
+            ],
+            'is_parttime'       => [
+                'nullable',
+            ],
+
             'district' => [
                 'string',
                 'nullable'
@@ -54,7 +62,14 @@ class StoreRequest extends FormRequest
                 'nullable',
                 'required_with:min_salary',
                 'gt:min_salary',//lớn hơn min
-            ]
+            ],
+            'job_title'         => [
+                'required',
+                'string',
+                'filled',
+                'min:3',
+                'max:255',
+            ],
         ];
     }
 }

@@ -39,7 +39,7 @@ class CompanyController extends Controller
     {
         try{
             $arr =$request->validated();// những cột được validate trong StoreRequest
-            $arr['logo'] =$request->file('logo')->store('company_logo');
+            $arr['logo'] = optional($request->file('logo'))->store('company_logo');
 
             Company::create($arr);
             return  $this->successResponse();
