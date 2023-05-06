@@ -74,6 +74,7 @@ class PostController extends Controller
         $object->district = $request['district'];
         $object->part_time = $part_time;
         $object->company_id = $company_id;
+        $object->remoteable = $remoteable;
         $object->min_salary = $request['min_salary'];
         $object->max_salary = $request['max_salary'];
         $object->currency_salary = $request['currency_salary'];

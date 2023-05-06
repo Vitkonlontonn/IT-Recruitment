@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label>Language (*)</label>
-                            <select class="form-control" multiple name="languages[]" id='select-language'></select>
+                            <select class="form-control" multiple name="languages[]" id='select-language' required></select>
                         </div>
                         <div class="form-row select-location">
                             <div class="form-group col-6">
@@ -262,7 +262,7 @@
             string += '</ul>';
             $("#div-error").html(string);
             $("#div-error").removeClass("d-none").show();
-            notifyError(string);
+
         }
 
         function submitForm(type) {
@@ -271,12 +271,10 @@
             if(type=='company')
             {
                 successNotification('Da them cong ty thanh cong')
-
             }
             if(type=='post')
             {
                 successNotification('Da them bai dang thanh cong')
-
             }
 
 
@@ -296,20 +294,19 @@
 
                     if (response.success) {
                         $("#div-error").hide();
-
                         {{--window.location.href = '{{ route('admin.posts.index') }}';--}}
                     } else {
-                        showError(response.message);
+                        // showError(response.message);
                     }
                 },
                 error: function (response) {
                     let errors;
                     if (response.responseJSON.errors) {
                         errors = Object.values(response.responseJSON.errors);
-                        showError(errors);
+                        // showError(errors);
                     } else {
                         errors = response.responseJSON.message;
-                        showError(errors);
+                        // showError(errors);
                     }
                 }
             });
@@ -397,7 +394,8 @@
                 rules: {
                     company: {
                         required: true
-                    }
+                    },
+
                 },
                 submitHandler: function () {
                     checkCompany();
