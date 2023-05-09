@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Enums\ObjectLanguageTypeEnum;
 use App\Enums\PostCurrencySalaryEnum;
 use App\Enums\PostStatusEnum;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
@@ -57,5 +58,16 @@ class Post extends Model
     public function getStatusNameAttribute()
     {
         return PostStatusEnum::getKeys($this->status);
+    }
+    public function languages()
+    {
+        return $this->morphToMany(
+            Language::class,
+            'object',
+            ObjectLanguage::class,
+            'object_id',
+            'language_id',
+        );
+
     }
 }
