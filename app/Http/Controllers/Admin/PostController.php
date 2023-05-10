@@ -38,7 +38,8 @@ class PostController extends Controller
     {
         $data = $this->model->get();
         $posts= Post::query()->paginate();
-        return view('admin.posts.index', $posts);
+        return view('admin.posts.index', [
+            'posts'=>$posts]);
     }
 
     public function create()
@@ -58,7 +59,7 @@ class PostController extends Controller
 
         $name_company = $request['company'];
         $company_id = DB::table('companies')->where('name', $name_company)->first()->id;
-        if ($request->has('remoteables')) {
+        if ($request->has('remoteable')) {
             $remoteable = 1;
         } else {
             $remoteable = 0;
@@ -105,4 +106,19 @@ class PostController extends Controller
         Excel::import(new PostImport(), $request->file('file'));
 
     }
+    public function edit()
+    {
+
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function destroy()
+    {
+
+    }
+
 }
