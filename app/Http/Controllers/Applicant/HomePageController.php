@@ -9,10 +9,11 @@ class HomePageController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('languages')
+        $posts = Post::query()
+            ->with('languages')
             ->latest()
             ->paginate();
-
+//dd($posts->toArray());
         return view('applicant.index', [
             'posts' => $posts,
         ]);

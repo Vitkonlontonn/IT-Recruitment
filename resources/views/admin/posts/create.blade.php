@@ -202,9 +202,9 @@
             languages = languages.join(',');
             const city = $("#select-city").val();
             const company = $("#select-company").val();
-            let title = `[${city}] [${languages}]`;
+            let title = `${city} - ${languages} `;
             if (company) {
-                title += ' - ' + '[' + company + ']';
+                title += ' - ' + ' ' + company + ' ';
             }
             $("#title").val(title);
         }

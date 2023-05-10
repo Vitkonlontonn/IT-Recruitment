@@ -135,7 +135,7 @@
 
                 <li class="button-container">
                     <a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn btn-rose btn-round">
-                        <i class="material-icons">shopping_cart</i> Buy Now
+                        <i class="material-icons"></i> Apply now
                     </a>
                 </li>
             </ul>

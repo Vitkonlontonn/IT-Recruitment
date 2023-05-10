@@ -21,7 +21,7 @@ class PostController extends Controller
         $this->model = Post::query();
     }
 
-    public function index()
+    public function index(): JsonResponse
     {
         $data = $this->model->paginate();
         foreach ($data as $each) {

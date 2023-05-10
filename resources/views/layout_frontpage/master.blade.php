@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>Ecommerce - Material Kit PRO by Creative Tim</title>
+    <title>IT - Recuiter</title>
 
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 
@@ -29,17 +29,7 @@
             <h2 class="section-title">Find what you need</h2>
             <div class="row">
                 @include('layout_frontpage.sidebar')
-
-                <div class="col-md-9">
-                    <div class="row">
-                        @yield('content')
-                    </div>
-                    <div class="col-md-3" style="float: right">
-                        <button rel="tooltip" class="btn btn-rose btn-round" data-original-title="" title="">Load
-                            more...
-                        </button>
-                    </div>
-                </div>
+                @yield('content')
             </div>
         </div>
     </div><!-- section -->

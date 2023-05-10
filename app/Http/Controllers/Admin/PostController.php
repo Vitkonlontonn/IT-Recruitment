@@ -37,7 +37,8 @@ class PostController extends Controller
     public function index()
     {
         $data = $this->model->get();
-        return view('admin.posts.index');
+        $posts= Post::query()->paginate();
+        return view('admin.posts.index', $posts);
     }
 
     public function create()
@@ -51,6 +52,7 @@ class PostController extends Controller
 
     public function store(StoreRequest $request)
     {
+
 
         $object = new Post();
 
@@ -83,12 +85,13 @@ class PostController extends Controller
         $object->end_date = $request['end_date'];
         $object->save();
 //
+
         $languages = $request->get('languages');
         foreach ($languages as $language) {
             ObjectLanguage::create([
                 'language_id' => $language,
                 'object_id' => $object->id,
-                'type' => ObjectLanguageTypeEnum::POST,
+                'object_type' =>1,
             ]);
         }
         return redirect()->route('admin.posts.index');

@@ -45,6 +45,9 @@
                         </tbody>
 
                     </table>
+{{--                    <ul class ="pagination pagination-info" >--}}
+{{--                        {{$posts->links()}}--}}
+{{--                    </ul>--}}
                 </div>
             </div>
         </div>
@@ -72,13 +75,14 @@
                             .append($('<td>').append(each.is_pinned ? 'x':' '))
                             .append($('<td>').append(each.created_at))
                         );
-                        // //renderPagination
-                        // response.pagination.forEach(function (each){
+                        //renderPagination
+                        // response.pagination.forEach(function (each) {
                         //     $('#pagination').append($('<li>'))
-                        //         .append(`<a className="page-link ${each.active ? 'active' : ''}" href="${each.url}">
+                        //         .append(`<a className="page-link ${each.active?'active':''}" href="${each.url}">
                         //     ${each.label}
                         //     </a>`);
                         // })
+
 
                     });
 
