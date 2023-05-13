@@ -33,6 +33,7 @@ class Post extends Model
         "is_pinned",
         "slug",
     ];
+
     protected static function booted()
     {
         static::creating(static function ($object) {
@@ -55,19 +56,38 @@ class Post extends Model
     {
         return PostCurrencySalaryEnum::getKeys($this->currency_salary);
     }
+
     public function getStatusNameAttribute()
     {
         return PostStatusEnum::getKeys($this->status);
     }
+
+    //Lấy languages từ 1 post
+    //dựa vào bảng pivot object_language
+    //many to many
     public function languages()
     {
-        return $this->morphToMany(
+        return $this->belongsToMany(
             Language::class,
-            'object',
-            ObjectLanguage::class,
+            'object_language',
             'object_id',
-            'language_id',
-        );
+            'language_id');
+    }
 
+    //one to many
+    public function company()
+    {
+        return $this->belongsTo(
+            Company::class
+        );
+    }
+
+    public function getLocationAttribute()
+    {
+        if(!empty($this->district))
+        {
+            return $this->district.' - '. $this->city;
+        }
+        else return $this->city;
     }
 }

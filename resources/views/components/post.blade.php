@@ -9,6 +9,7 @@
                     <h4 class="card-title">
                         <a href="#pablo">
                             {{ $languages }}
+
                         </a>
                     </h4>
                     <p class="card-description">
@@ -17,8 +18,8 @@
                     <div class="footer" style="display: flex; align-items: center; justify-content: space-between">
                         <div class="author" >
                             <a href="#pablo">
-                                <img src="assets/img/faces/marc.jpg" class="avatar img-raised">
-                                <span>Mike John</span>
+                                <img src="{{$company -> logo}}" class="avatar img-raised">
+                                <span>{{ $company -> name }}</span>
                                 <div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 1131px; top: 16561px; background-color: rgb(60, 72, 88); transform: scale(12.75);"></div></div>
                             </a>
                         </div>
@@ -29,14 +30,15 @@
                 </div>
             </div>
 
+{{--            Mặt sau--}}
             <div class="back" style="height: 328.875px; width: 359.99px;">
                 <div class="card-content">
                     <br>
                     <h5 class="card-title">
-                        Do more...
+                        Information
                     </h5>
                     <p class="card-description">
-                        You can read this article or share it with your friends and family on different networks...
+                        {{$location}}
                     </p>
                     <div class="footer text-center">
                         <a href="#pablo" class="btn btn-rose btn-round">

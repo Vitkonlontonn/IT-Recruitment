@@ -9,11 +9,24 @@ class HomePageController extends Controller
 {
     public function index()
     {
+//        \DB::enableQueryLog();
+//            $post = Post::with('languages')->find(34);
+//            dd($post->languages->toArray());
+//        dd(\DB::getQueryLog());
         $posts = Post::query()
-            ->with('languages')
+            ->with(['languages',
+                'company' => function ($q) {
+                    return $q->select([
+                        'id',
+                        'name',
+                        'logo'
+                    ]);
+                }
+                ])
             ->latest()
             ->paginate();
-//dd($posts->toArray());
+
+//        dd($posts->toArray());
         return view('applicant.index', [
             'posts' => $posts,
         ]);
