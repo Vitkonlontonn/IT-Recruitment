@@ -23,6 +23,7 @@ class PostController extends Controller
 
     public function index(): JsonResponse
     {
+        //lấy dữ liệu và phân trang
         $data = $this->model->paginate();
         foreach ($data as $each) {
             $each->currency_salary = $each->currency_salary_code;

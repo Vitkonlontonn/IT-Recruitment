@@ -59,7 +59,7 @@ class PostImport implements ToArray, WithHeadingRow
                         ]);
 
                 } catch (\Throwable $e) {
-                    dd($each);
+                    dd($e);
 
                 }
             }

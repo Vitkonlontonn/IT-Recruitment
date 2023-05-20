@@ -30,7 +30,7 @@ class PostController extends Controller
         $this->model = Post::query();
         $this->table = (new Post())->getTable();
 
-        View::share('title', ucwords($this->table));
+        View::share('title', ucwords($this->table)); //ucwords: convert lại string
         View::share('table', $this->table);
     }
 

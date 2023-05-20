@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\ObjectLanguageTypeEnum;
 use App\Enums\PostCurrencySalaryEnum;
 use App\Enums\PostStatusEnum;
+use App\Enums\SystemCacheKeyEnum;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -41,6 +42,43 @@ class Post extends Model
             $object->user_id = 1;
             $object->status = 1;
         });
+
+        //dạng như bắt sự kiện khi saved(create or update)
+        // static::saved(static function ($object) {
+        //     $city = $object->city;
+        //     $arr = explode(',', $city);
+        //     $arrCity = cache()->remember(
+        //         SystemCacheKeyEnum::POST_CITIES,
+        //         60 * 60 * 60 * 24 * 30,
+        //         function () {
+        //             $cities = Post::query()
+        //                 ->pluck('city');
+        //             $arrCity = [];
+        //             foreach ($cities as $city) {
+        //                 if (empty($city)) {
+        //                     continue;
+        //                 }
+        //                 $arr = explode(',', $city);
+        //                 foreach ($arr as $item) {
+        //                     if (in_array($item, $arrCity)) {
+        //                         continue;
+        //                     }
+        //                     $arrCity[] = $item;
+        //                 }
+        //             }
+        //             return $arrCity;
+    
+        //         }
+        //     );
+
+        //     foreach ($arr as $item) {
+        //         if (in_array($item, $arrCity)) {
+        //             continue;
+        //         }
+        //         $arrCity[] = $item;
+        //     }
+        //     cache()->put( SystemCacheKeyEnum::POST_CITIES, $arrCity);
+        // });
     }
 
     public function sluggable(): array
@@ -71,7 +109,8 @@ class Post extends Model
             Language::class,
             'object_language',
             'object_id',
-            'language_id');
+            'language_id'
+        );
     }
 
     //one to many
@@ -84,10 +123,8 @@ class Post extends Model
 
     public function getLocationAttribute()
     {
-        if(!empty($this->district))
-        {
-            return $this->district.' - '. $this->city;
-        }
-        else return $this->city;
+        if (!empty($this->district)) {
+            return $this->district . ' - ' . $this->city;
+        } else return $this->city;
     }
 }

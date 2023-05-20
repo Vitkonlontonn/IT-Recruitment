@@ -106,16 +106,13 @@
                             window.location.search = urlParams;
                         });
 
-
-
-
                 },
                 error: function (response) {
 
                 }
             })
             $("#csv").change(function (event) {
-                var formData = new FormData();
+                var formData = new FormData(); //interface
                 formData.append('file', $(this)[0].files[0]);
                 $.ajax({
                     url: "{{route('admin.posts.import_csv')}}",

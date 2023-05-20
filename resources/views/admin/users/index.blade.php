@@ -20,8 +20,7 @@
                                     <option selected>All</option>
                                     @foreach($roles as $role=>$value)
                                         <option value="{{$value}}"
-                                                @if((string)$value===$selectedRole) selected @endif
-                                        >
+                                                @if((string)$value===$selectedRole) selected @endif>
                                             {{$role}}
                                         </option>
 
@@ -61,7 +60,6 @@
                                 </select>
                             </div>
                         </div>
-
 
                     </form>
                 </div>

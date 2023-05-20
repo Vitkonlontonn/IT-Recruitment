@@ -31,7 +31,7 @@ class UserController extends Controller
         $selectedCompany = $request->get('company');
         $query = $this->model->clone()
             ->with('company:id,name')
-            ->latest();
+            ->latest();// tạo 1 truy vấn
 
         if (!empty($selectedRole) && $selectedRole != 'All') {
             $query->where('role', $request->get('role'));
@@ -51,7 +51,7 @@ class UserController extends Controller
         $roles = UserRoleEnum::asArray();
 
         $cities = $this->model->clone()
-            ->distinct()
+            ->distinct()// lấy giá trị duy nhất
             ->pluck('city');
 
         $companies = Company::query()

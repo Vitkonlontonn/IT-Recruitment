@@ -23,6 +23,9 @@
                                 <div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 1131px; top: 16561px; background-color: rgb(60, 72, 88); transform: scale(12.75);"></div></div>
                             </a>
                         </div>
+                        <p class="card-description">
+                            {{$location}}
+                        </p>
                         <button type="button" name="button" class="btn btn-sm btn-success btn-fill btn-round btn-rotate">
                             <i class="material-icons">refresh</i>
                         </button>
