@@ -11,6 +11,7 @@
             <form>
                 <div class="panel panel-default panel-rose">
                     <div class="panel-heading" role="tab" id="headingOne">
+
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                            href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             <h4 class="panel-title">Salary</h4>
@@ -19,9 +20,15 @@
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                          aria-labelledby="headingOne">
+                        <input type="hidden" name="min_salary" value="{{ $minSalary }}" id="input-min-salary">
+                        <input type="hidden" name="max_salary" value="{{ $maxSalary }}" id="input-max-salary">
                         <div class="panel-body panel-refine">
-                            <span id="price-left" class="price-left pull-left" data-currency="€">€42</span>
-                            <span id="price-right" class="price-right pull-right" data-currency="€">€880</span>
+                            <span class="pull-left">
+                                $<span id="span-min-salary">{{ $minSalary }}</span>
+                            </span>
+                            <span class="pull-right">
+                                $<span id="span-max-salary">{{ $maxSalary }}</span>
+                            </span>
                             <div class="clearfix"></div>
                             <div id="sliderRefine"
                                  class="slider slider-rose noUi-target noUi-ltr noUi-horizontal"></div>
