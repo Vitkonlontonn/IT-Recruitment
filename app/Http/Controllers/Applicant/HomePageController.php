@@ -48,7 +48,9 @@ class HomePageController extends Controller
                     ]);
                 }
             ])
+
             ->latest();
+
 
 
         if (!empty($searchCities)) {
@@ -61,27 +63,32 @@ class HomePageController extends Controller
             });
 
         }
-        $searchRemote = 0;
-        $searchPartTime = 0;
-        if ($request->has('remote')) {
+        $searchRemote =0;
+        $searchPartTime=0;
+        if ($request->has('remote'))
+        {
             $query->where('remoteable', 1);
-            $searchRemote = 1;
+            $searchRemote =1;
         }
 
-        if ($request->has('part_time')) {
+        if ($request->has('part_time'))
+        {
             $query->where('part_time', 1);
-            $searchPartTime = 1;
+            $searchPartTime=1;
         }
 
         $minSalary = 100;
-        $maxSalary = 100000;
-        if ($request->has('min_salary')) {
+        $maxSalary =100000;
+        if ($request->has('min_salary'))
+        {
             $minSalary = $request->get('min_salary');
             $maxSalary = $request->get('max_salary');
+            $query->where('min_salary','>=', $minSalary )
+                ->where('max_salary','<=', $maxSalary);
         }
 
-        $query->where('min_salary', '>=', $minSalary)
-            ->where('max_salary', '>=', $maxSalary);
+
+
 
 
         $posts = $query->paginate();
@@ -91,10 +98,10 @@ class HomePageController extends Controller
             'posts' => $posts,
             'cities' => $arrCity,
             'searchCities' => $searchCities,
-            'searchPartTime' => $searchPartTime,
-            'searchRemote' => $searchRemote,
-            'minSalary' => $minSalary,
-            'maxSalary' => $maxSalary,
+            'searchPartTime'=>$searchPartTime,
+            'searchRemote'=>$searchRemote,
+            'minSalary'    => $minSalary,
+            'maxSalary'    => $maxSalary,
         ]);
     }
 }
