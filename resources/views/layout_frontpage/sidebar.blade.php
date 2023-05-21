@@ -42,7 +42,10 @@
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="part_time" data-toggle="checkbox"
+                                    <input type="checkbox" value="1" data-toggle="checkbox"
+                                           @if($searchPartTime == 1)
+                                               checked
+                                           @endif
                                            name="part_time"><span
                                         class="checkbox-material"><span class="check"></span></span>
                                     Part time
@@ -51,7 +54,11 @@
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="remote" data-toggle="checkbox" name="remote"><span
+                                    <input type="checkbox" value="1" data-toggle="checkbox"
+                                           @if($searchRemote == 1)
+                                               checked
+                                           @endif
+                                           name="remote"><span
                                         class="checkbox-material"><span class="check"></span></span>
                                     Remote
                                 </label>
@@ -86,8 +93,6 @@
                                     </label>
                                 </div>
                             @endforeach
-
-
                         </div>
                     </div>
                 </div>

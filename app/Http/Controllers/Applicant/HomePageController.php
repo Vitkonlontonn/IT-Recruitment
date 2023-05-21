@@ -11,12 +11,6 @@ class HomePageController extends Controller
 {
     public function index(Request $request)
     {
-//        \DB::enableQueryLog();
-//            $post = Post::with('languages')->find(34);
-//            dd($post->languages->toArray());
-//        dd(\DB::getQueryLog());
-        //
-
         $searchCities = $request->get('cities', []);
 
 
@@ -54,7 +48,10 @@ class HomePageController extends Controller
                     ]);
                 }
             ])
+
             ->latest();
+
+
 
         if (!empty($searchCities)) {
             $query->where(function ($q) use ($searchCities) {
@@ -66,13 +63,29 @@ class HomePageController extends Controller
             });
 
         }
+        $searchRemote =0;
+        $searchPartTime=0;
+        if ($request->has('remote'))
+        {
+            $query->where('remoteable', 1);
+            $searchRemote =1;
+        }
+
+        if ($request->has('part_time'))
+        {
+            $query->where('part_time', 1);
+            $searchPartTime=1;
+        }
+
         $posts = $query->paginate();
 
-//        dd($posts->toArray());
+
         return view('applicant.index', [
             'posts' => $posts,
             'cities' => $arrCity,
             'searchCities' => $searchCities,
+            'searchPartTime'=>$searchPartTime,
+            'searchRemote'=>$searchRemote,
         ]);
     }
 }
