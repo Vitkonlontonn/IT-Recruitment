@@ -106,18 +106,38 @@ class PostController extends Controller
         Excel::import(new PostImport(), $request->file('file'));
 
     }
-    public function edit()
+    public function edit(Request $request)
     {
+        $currencies = PostCurrencySalaryEnum::asArray();
+        $id = $request->query('id');
+        $post= Post::find($id);
+        $company = Company::find($post->company_id);
+
+        return view('admin.posts.edit',[
+            'post' => $post,
+            'company'=>$company,
+            'currencies' => $currencies,
+        ]);
 
     }
 
-    public function update()
+    public function update(Request $request, $post_id)
     {
+
+        $object = $this->model->find($post_id);
+        $object->fill($request->except('_token', '_method'));
+        $object->save();
+        return redirect('/admin/posts/index' );
 
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
+        $id = $request->query('id');
+        $object = $this->model->find($id);
+        $object->delete();
+
+        return redirect('/admin/posts/' );
 
     }
 

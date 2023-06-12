@@ -114,7 +114,7 @@
                                     {{optional($each->company)->name}}
                                 </td>
                                 <td>
-                                    <form action="{{route("admin.$table.destroy", $each->id)}}" method="post" >
+                                    <form action="{{route("admin.$table.destroy", $each->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger">Delete</button>

@@ -18,13 +18,15 @@
                     <div class="footer" style="display: flex; align-items: center; justify-content: space-between">
                         <div class="author" >
                             <a href="#pablo">
-                                <img src="{{$company -> logo}}" class="avatar img-raised">
+                                <img src="https://advnlaw.vn/upload/news/unnamed-5410.png" class="avatar img-raised">
                                 <span>{{ $company -> name }}</span>
                                 <div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 1131px; top: 16561px; background-color: rgb(60, 72, 88); transform: scale(12.75);"></div></div>
                             </a>
                         </div>
                         <p class="card-description">
                             {{$location}}
+                            <br>
+
                         </p>
                         <button type="button" name="button" class="btn btn-sm btn-success btn-fill btn-round btn-rotate">
                             <i class="material-icons">refresh</i>
@@ -44,8 +46,9 @@
                         {{$location}}
                     </p>
                     <div class="footer text-center">
-                        <a href="#pablo" class="btn btn-rose btn-round">
-                            <i class="material-icons">subject</i> Read
+                        <a  class="btn btn-rose btn-round"
+                        href="{{route('applicant.show', $postId)}}">
+                            <i class="material-icons">subject</i>  Read
                         </a>
                         <a href="#pablo" class="btn btn-just-icon btn-round btn-twitter">
                             <i class="fa fa-twitter"></i>
@@ -53,9 +56,13 @@
                         <a href="#pablo" class="btn btn-just-icon btn-round btn-dribbble">
                             <i class="fa fa-dribbble"></i>
                         </a>
+
                         <a href="#pablo" class="btn btn-just-icon btn-round btn-facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
+                        <br>
+                        {{$part_time}}
+                        {{$remote}}
                     </div>
                     <br>
                     <button type="button" name="button" class="btn btn-simple btn-round btn-rotate">

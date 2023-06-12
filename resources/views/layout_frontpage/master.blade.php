@@ -26,11 +26,10 @@
     <!-- section -->
     <div class="section">
         <div class="container">
-            <h2 class="section-title">Find what you need</h2>
-            <div class="row">
-                @include('layout_frontpage.sidebar')
-                @yield('content')
-            </div>
+
+
+            @yield('content')
+
         </div>
     </div><!-- section -->
 

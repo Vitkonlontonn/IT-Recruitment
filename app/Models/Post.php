@@ -67,7 +67,7 @@ class Post extends Model
         //                 }
         //             }
         //             return $arrCity;
-    
+
         //         }
         //     );
 
@@ -104,6 +104,15 @@ class Post extends Model
     //dựa vào bảng pivot object_language
     //many to many
     public function languages()
+    {
+        return $this->belongsToMany(
+            Language::class,
+            'object_language',
+            'object_id',
+            'language_id'
+        );
+    }
+    public function getLanguagesAttribute()
     {
         return $this->belongsToMany(
             Language::class,

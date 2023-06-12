@@ -36,7 +36,7 @@
                             <th>Salary</th>
                             <th>Date Range</th>
 {{--                            <th>Status</th> xem xét--}}
-                            <th>Pinned</th>
+
                             <th>Created At</th>
                             <th>Action</th>
                             <th>Action</th>
@@ -84,9 +84,10 @@
                                 .append($('<td>').append(each.part_time ? 'x' : ' '))
                                 .append($('<td>').append((each.min_salary && each.max_salary) ? each.min_salary + '-' + each.max_salary : ''))
                                 .append($('<td>').append((each.start_date && each.end_date) ? each.start_date + '-' + each.end_date : ''))
-                                // .append($('<td>').append(each.status)) //xem xét
-                                .append($('<td>').append(each.is_pinned ? 'x' : ' '))
                                 .append($('<td>').append(formatDate(each.created_at)))
+                                .append($('<td>').append($('<a>').attr('href', '/admin/posts/edit?id='+each.id).append('Edit')))
+                                .append($('<td>').append($('<a>').attr('href', '/admin/posts/destroy?id='+each.id).append('Delete')))
+
                             {{--.append($('<td>').append(<a href="{{route('admin.posts.edit')}}"><i class="mdi mdi-pencil"></i></a>))--}}
                             {{--.append($('<td>').append(<form action="{{route('admin.posts.destroy')}}" method="post">--}}
                             {{--    @csrf--}}

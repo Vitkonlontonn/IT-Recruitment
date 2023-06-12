@@ -26,8 +26,8 @@ Route::group([
     Route::post('/create', [PostController::class, 'store'])->name('store');
     Route::post('/import-csv', [PostController::class, 'importCsv'])->name('import_csv');
     Route::get('/edit', [PostController::class, 'edit'])->name('edit');
-    Route::post('/edit', [PostController::class, 'update'])->name('update');
-    Route::post('/destroy', [PostController::class, 'destroy'])->name('destroy');
+    Route::put('/edit/{post}', [PostController::class, 'update'])->name('update');
+    Route::get('/destroy', [PostController::class, 'destroy'])->name('destroy');
 
 });
 

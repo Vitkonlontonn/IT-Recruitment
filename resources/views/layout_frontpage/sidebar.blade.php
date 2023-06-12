@@ -3,10 +3,11 @@
         <div class="card-content">
             <h4 class="card-title">
                 Refine
-                <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right" rel="tooltip" title=""
-                        data-original-title="Reset Filter">
+                <a class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right" rel="tooltip" title=""
+                        data-original-title="Reset Filter"
+                href="{{route('applicant.index')}}">
                     <i class="material-icons">cached</i>
-                </button>
+                </a>
             </h4>
             <form>
                 <div class="panel panel-default panel-rose">
