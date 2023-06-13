@@ -27,10 +27,13 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $role = auth()->user()->role;
+            $user = auth() -> user();
+//            dd($user);
             $role= UserRoleEnum::getKey($role);
             $role= strtolower($role);
-//            dd($role);
-            return redirect()->route($role.'.welcome')
+//
+            $request->session()->put('user', $user);
+            return redirect()->route('applicant.index')
                 ->withSuccess('Signed in');
         }
 
@@ -90,7 +93,7 @@ class AuthController extends Controller
 
     }
 
-    public function registering(RegisteringRequest $request)
+    public function registering(Request $request)
     {
         $password = Hash::make($request->get('password'));
         $role = $request->get('role');
@@ -102,12 +105,11 @@ class AuthController extends Controller
             $user = User::create([
                 'email' => $request->get('email'),
                 'password' => $password,
-                'name' => $request->get('name'),
-                'role' => $role,
+                'name' => $request->get('name')
             ]);
 
             Auth::login($user);
-            return redirect()->route('applicant.welcome');
+            return redirect()->route('applicant.index');
 
         }
         else {

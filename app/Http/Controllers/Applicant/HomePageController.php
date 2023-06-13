@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Applicant;
 
 use App\Enums\SystemCacheKeyEnum;
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -11,9 +12,9 @@ class HomePageController extends Controller
 {
     public function index(Request $request)
     {
+//        $user = $request->session()->get('user');
+
         $searchCities = $request->get('cities', []);
-
-
         $arrCity = cache()->remember(
             SystemCacheKeyEnum::POST_CITIES,
             60 * 60 * 60 * 24 * 30,
@@ -109,6 +110,18 @@ class HomePageController extends Controller
 
         return view('applicant.show', [
             'post' => $post,
+        ]);
+
+    }
+    public function company($companyId)
+    {
+        $company = Company::query()
+            ->find($companyId);
+        $posts =  Post::where('company_id', $companyId)->get();
+//        dd($posts);
+        return view('applicant.company', [
+            'company' => $company,
+            'posts'=>$posts,
         ]);
 
     }

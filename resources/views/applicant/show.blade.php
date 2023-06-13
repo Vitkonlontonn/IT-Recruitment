@@ -8,7 +8,7 @@
                     <div class="card-content">
                         <ul>
                             <li>
-                                {{ $post->remotable_name }}
+                                {{ $post->remoteable }}
                             </li>
                             <li>
                                 <i class="material-icons text-success">
@@ -29,7 +29,7 @@
                             <li><i class="material-icons text-danger">close</i> Personal Brand</li>
                         </ul>
                         <a href="#pablo" class="btn btn-primary btn-round">
-                            Get Started
+                            Apply
                         </a>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
             <h4>
                 Location: {{ $post->location }}
                 <br>
-                Company: <a href="#">
+                Company: <a href="{{route('applicant.company', $post->company_id)}}">
                     {{ $post->company->name }}
                 </a>
             </h4>

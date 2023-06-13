@@ -1,166 +1,213 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <title>Register - Sign Up | Hyper - Responsive Bootstrap 4 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
-    <meta content="Coderthemes" name="author"/>
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <!-- App css -->
-    <link href="{{asset('css/icons.min.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{asset('css/app-creative.min.css')}}" rel="stylesheet" type="text/css" id="light-style"/>
-    <link href="{{asset('css/app-creative-dark.min.css')}}" rel="stylesheet" type="text/css" id="dark-style"/>
+    <title>Signup Page - Material Kit PRO by Creative Tim</title>
 
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+    <!-- CSS Files -->
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/material-kit.css?v=1.2.1')}}" rel="stylesheet"/>
+    <link href="{{asset('css/material-kit.css?v=1.2.1')}}" rel="stylesheet"/>
 </head>
 
-<body class="authentication-bg" data-layout-config='{"darkMode":true}'>
-
-<div class="account-pages mt-5 mb-5">
+<body class="signup-page">
+<nav class="navbar navbar-primary navbar-transparent navbar-absolute">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-5">
-                <div class="card">
-                    <!-- Logo-->
-                    <div class="card-header pt-4 pb-4 text-center bg-primary">
-                        <a href="index.html">
-                            <span><img src="assets/images/logo.png" alt="" height="18"></span>
-                        </a>
-                    </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../presentation.html">Material Kit PRO</a>
+        </div>
 
-                    <div class="card-body p-4">
 
-                        <div class="text-center w-75 m-auto">
-                            <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Free Sign Up</h4>
-                            <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a
-                                minute </p>
+    </div>
+    </div>
+</nav>
+
+
+<div class="page-header header-filter" filter-color="purple" style="background-image: url('../assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+
+                <div class="card card-signup">
+                    <h2 class="card-title text-center">Register</h2>
+                    <div class="row">
+                        <div class="col-md-5 col-md-offset-1">
+                            <div class="info info-horizontal">
+                                <div class="icon icon-rose">
+                                    <i class="material-icons">timeline</i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title">Marketing</h4>
+                                    <p class="description">
+                                        We've created the marketing campaign of the website. It was a very interesting collaboration.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="info info-horizontal">
+                                <div class="icon icon-primary">
+                                    <i class="material-icons">code</i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title">Fully Coded in HTML5</h4>
+                                    <p class="description">
+                                        We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="info info-horizontal">
+                                <div class="icon icon-info">
+                                    <i class="material-icons">group</i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title">Built Audience</h4>
+                                    <p class="description">
+                                        There is also a Fully Customizable CMS Admin Dashboard for this product.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <form action="{{route ('registering')}}" method="post">
-                            @csrf
-                            {{--                            @auth--}}
-                            {{--                                @if ($errors->any())--}}
-                            {{--                                    <div class="alert alert-danger">--}}
-                            {{--                                        <ul>--}}
-                            {{--                                            @foreach ($errors->all() as $error)--}}
-                            {{--                                                <li>{{ $error }}</li>--}}
-                            {{--                                            @endforeach--}}
-                            {{--                                        </ul>--}}
-                            {{--                                    </div>--}}
-                            {{--                                @endif--}}
-                            {{--                                <div class="form-group">--}}
-                            {{--                                    <label for="fullname">Full Name</label>--}}
-                            {{--                                    <input class="form-control" type="text" id="fullname" placeholder="Enter your name"--}}
-                            {{--                                           required name="name"--}}
-                            {{--                                           disabled value="{{auth()->user()->name}}">--}}
-                            {{--                                </div>--}}
-
-                            {{--                                <div class="form-group">--}}
-                            {{--                                    <label for="emailaddress">Email address</label>--}}
-                            {{--                                    <input class="form-control" type="email" id="emailaddress" required--}}
-                            {{--                                           placeholder="Enter your email" name="email"--}}
-                            {{--                                           value="{{auth()->user()->email }}">--}}
-                            {{--                                </div>--}}
-
-                            {{--                                <div class="form-group">--}}
-                            {{--                                    <label>Avatar: </label>--}}
-                            {{--                                    <img src="{{auth()->user()->avatar}}" class="rounded-circle" width="40">--}}
-                            {{--                                </div>--}}
-
-                            {{--                            @endauth--}}
-                            {{--                            @guest--}}
-
-
-                            <div class="form-group">
-                                <label for="fullname">Full Name</label>
-                                <input class="form-control" type="text" id="fullname" placeholder="Enter your name"
-                                       required name="name">
+                        <div class="col-md-5">
+                            <div class="social text-center">
+                                <button class="btn btn-just-icon btn-round btn-twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-round btn-git">
+                                    <i class="fa fa-dribbble"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-round btn-facebook">
+                                    <i class="fa fa-facebook"> </i>
+                                </button>
+                                <h4> or be classical </h4>
                             </div>
 
-                            <div class="form-group">
-                                <label for="emailaddress">Email address</label>
-                                <input class="form-control" type="email" id="emailaddress" required
-                                       placeholder="Enter your email" name="email">
-                            </div>
-                            {{--                            @endguest--}}
+                            <form class="form" action="{{route('registering')}}" method="post">
+                                @csrf
+                                <div class="card-content">
+                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="material-icons">face</i>
+											</span>
+                                        <input name="name" type="text" class="form-control" placeholder="Full Name...">
+                                    </div>
 
+                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="material-icons">email</i>
+											</span>
+                                        <input name="email" type="text" class="form-control" placeholder="Email...">
+                                    </div>
 
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <div class="input-group input-group-merge">
-                                    <input type="password" id="password" class="form-control"
-                                           placeholder="Enter your password" name="password">
-                                    <div class="input-group-append" data-password="false">
-                                        <div class="input-group-text">
-                                            <span class="password-eye"></span>
-                                        </div>
+                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="material-icons">lock_outline</i>
+											</span>
+                                        <input name="password" type="password" placeholder="Password..." class="form-control" />
+                                    </div>
+
+                                    <!-- If you want to add a checkbox to this form, uncomment this code -->
+
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="optionsCheckboxes" checked>
+                                            Have a account?  <a href="{{route('login')}}">Login</a>.
+                                        </label>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="mt-2">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="applicant" name="role"
-                                           value="1" checked="checked">
-                                    <label class="custom-control-label" for="customRadio3">Applicant</label>
+                                <div class="footer text-center">
+                                    <button class="btn btn-primary" type="submit"> Get Started</button>
                                 </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="hr" name="role" value="2">
-                                    <label class="custom-control-label" for="customRadio4">HR</label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox-signup">
-                                    <label class="custom-control-label" for="checkbox-signup">I accept <a href="#"
-                                                                                                          class="text-muted">Terms
-                                            and Conditions</a></label>
-                                </div>
-                            </div>
-
-                            <div class="form-group mb-0 text-center">
-                                <button class="btn btn-primary" type="submit"> Sign Up</button>
-                            </div>
-
-                        </form>
-                    </div> <!-- end card-body -->
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <!-- end card -->
 
-                <div class="row mt-3">
-                    <div class="col-12 text-center">
-                        <p class="text-muted">Already have account? <a href="{{route('login')}}"
-                                                                       class="text-muted ml-1"><b>Log In</b></a></p>
-                    </div> <!-- end col-->
-                </div>
-                <!-- end row -->
-
-            </div> <!-- end col -->
+            </div>
         </div>
-        <!-- end row -->
     </div>
-    <!-- end container -->
+
+    <footer class="footer">
+        <div class="container">
+            <nav class="pull-left">
+                <ul>
+                    <li>
+                        <a href="http://www.creative-tim.com">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://presentation.creative-tim.com">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.creative-tim.com/license">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright pull-right">
+                &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com" target="_blank">Creative Tim</a>
+            </div>
+        </div>
+    </footer>
+
 </div>
-<!-- end page -->
 
-<footer class="footer footer-alt">
-    2023 © - ITRecuiter.com
-</footer>
-
-<!-- bundle -->
-<script src="{{asset('js/vendor.min.js')}}"></script>
-<script src="{{asset('js/app.min.js')}}"></script>
 
 </body>
+<!--   Core JS Files   -->
+<script src="{{asset('js/jquery.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/material.min.js')}}"></script>
+
+<!--    Plugin for Date Time Picker and Full Calendar Plugin   -->
+<script src="../assets/js/moment.min.js"></script>
+
+<!--	Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/   -->
+<script src="../assets/js/nouislider.min.js" type="text/javascript"></script>
+
+<!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker   -->
+<script src="../assets/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+
+<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select   -->
+<script src="../assets/js/bootstrap-selectpicker.js" type="text/javascript"></script>
+
+<!--	Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/   -->
+<script src="../assets/js/bootstrap-tagsinput.js"></script>
+
+<!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput   -->
+<script src="../assets/js/jasny-bootstrap.min.js"></script>
+
+<!--    Plugin For Google Maps   -->
+<script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+<!--    Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc    -->
+<script src="{{asset('js/material-kit.js?v=1.2.1')}}" type="text/javascript"></script>
 </html>
+
