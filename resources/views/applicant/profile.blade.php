@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Profile Page - Material Kit PRO by Creative Tim</title>
+    <title>IT Recuiter</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 
@@ -105,8 +105,12 @@
                                                 <a href="#pablo">
                                                     <h3 class="card-title">{{$post->job_title}}</h3>
                                                 </a>
-
-                                                <h5></h5>
+                                                @if($post->getOriginal('pivot_status')==1)
+                                                <h5 class="card-content" style="color:white;" >Approved</h5>
+                                                @endif
+                                                @if($post->getOriginal('pivot_status')==0)
+                                                    <h5 class="card-content" style="color:white;" >Not Approved Yet</h5>
+                                                @endif
 
                                             </div>
                                         </div>

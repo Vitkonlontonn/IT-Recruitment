@@ -45,21 +45,21 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="role">Company</label>
-                            <div class="col-3">
-                                <select class="form-control select-filter" name="company" id="company">
-                                    <option selected>All</option>
-                                    @foreach($companies as $company)
-                                        <option value="{{$company->id}}"
-                                                @if($company->id==$selectedCompany) selected @endif
-                                        >
-                                            {{$company->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+{{--                        <div class="form-group">--}}
+{{--                            <label for="role">Company</label>--}}
+{{--                            <div class="col-3">--}}
+{{--                                <select class="form-control select-filter" name="company" id="company">--}}
+{{--                                    <option selected>All</option>--}}
+{{--                                    @foreach($companies as $company)--}}
+{{--                                        <option value="{{$company->id}}"--}}
+{{--                                                @if($company->id==$selectedCompany) selected @endif--}}
+{{--                                        >--}}
+{{--                                            {{$company->name}}--}}
+{{--                                        </option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                     </form>
                 </div>
@@ -74,7 +74,6 @@
                             <th>Role</th>
                             <th>Position</th>
                             <th>City</th>
-                            <th>Company</th>
                             <th>Delete</th>
                         </tr>
                         </thead>
@@ -109,9 +108,6 @@
                                 </td>
                                 <td>
                                     {{$each->city}}
-                                </td>
-                                <td>
-                                    {{optional($each->company)->name}}
                                 </td>
                                 <td>
                                     <form action="{{route("admin.$table.destroy", $each->id)}}" method="post">

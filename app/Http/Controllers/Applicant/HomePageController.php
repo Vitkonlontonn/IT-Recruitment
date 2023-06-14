@@ -127,10 +127,10 @@ class HomePageController extends Controller
 
     public function apply($postId)
     {
-        $user=Session::get('user');
+        $user = Session::get('user');
         return view('applicant.apply', [
             'postId' => $postId,
-            'user'=>$user
+            'user' => $user
         ]);
     }
 
@@ -151,9 +151,9 @@ class HomePageController extends Controller
     public function profile(Request $request)
     {
         $user1 = Session::get('user');
-        $user=User::find($user1->id);
+        $user = User::find($user1->id);
         $posts = $user->posts;
-
+//        dd($posts);
         return view("applicant.profile", [
             'user' => $user,
             'posts' => $posts,
