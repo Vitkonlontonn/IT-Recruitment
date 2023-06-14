@@ -5,6 +5,7 @@
             <form class="form" action="{{route('applicant.appling')}}" enctype="multipart/form-data" method="post">
                 @csrf
                 <div class="row">
+                    <input type="hidden" name="post_id" value="{{$postId}}">
                     <div class="form-group form-file-upload is-empty is-fileinput">
                         <input type="file" name="file" id="inputFile2" multiple="">
                         <div class="input-group">

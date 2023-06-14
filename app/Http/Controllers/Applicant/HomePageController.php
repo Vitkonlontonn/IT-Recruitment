@@ -6,6 +6,8 @@ use App\Enums\SystemCacheKeyEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Post;
+use App\Models\Report;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -130,21 +132,26 @@ class HomePageController extends Controller
 
     public function apply($postId)
     {
-        return view('applicant.apply');
+        return view('applicant.apply',[
+            'postId' => $postId
+        ]);
     }
     public function appling(Request $request)
     {
+        $post_id = $request->get('post_id');
+        $user = Session::get('user');
+
         if ($request->hasFile('file')) {
             $file = $request->file('file');
+            $path = $file->store('cv');
+            $user->link=$path;
+            $user->save();
+            
+            $apply = new Report();
+            $apply->user_id = $user->id;
+            $apply->reported_id = $post_id;
+            $apply->save();
 
-//            $path = $file->store('cv');
-//
-            $fileName = $file->getClientOriginalName();
-            $fileExtension = $file->getClientOriginalExtension();
-
-            //Lưu file path thành link của người dùng đang đăng nhập
-
-//            dd($path);
         }
 
         return redirect()->route('applicant.index');
