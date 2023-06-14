@@ -41,6 +41,10 @@ class User extends Model implements AuthenticatableContract
         return "Male";
 
     }
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class, 'reports', 'user_id', 'reported_id');
+    }
 
 
 }

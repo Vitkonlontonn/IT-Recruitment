@@ -20,11 +20,13 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu dropdown-with-icons">
+                        @if(isset($user))
                         <li>
-                            <a href="../examples/about-us.html">
-                                <i class="material-icons">account_balance</i> Profile
+                            <a href="applicant/profile/{{$user->id}}">
+                                <i class="material-icons">account_circle</i> Profile Page
                             </a>
                         </li>
+                        @endif
                         <li>
                             <a href="../examples/blog-post.html">
                                 <i class="material-icons">art_track</i> Jobs
@@ -36,6 +38,7 @@
                                 <i class="material-icons">fingerprint</i> Log out
                             </a>
                         </li>
+
 
                 <li class="button-container">
                     <a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn btn-rose btn-round">

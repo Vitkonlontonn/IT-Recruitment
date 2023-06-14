@@ -136,4 +136,6 @@ class Post extends Model
             return $this->district . ' - ' . $this->city;
         } else return $this->city;
     }
+
+
 }

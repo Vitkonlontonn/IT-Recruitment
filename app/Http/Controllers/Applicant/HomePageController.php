@@ -16,7 +16,7 @@ class HomePageController extends Controller
     public function index(Request $request)
     {
 //        $user = $request->session()->get('user');
-        $user= Session::get('user');
+        $user = Session::get('user');
         $searchCities = $request->get('cities', []);
         $arrCity = cache()->remember(
             SystemCacheKeyEnum::POST_CITIES,
@@ -87,14 +87,8 @@ class HomePageController extends Controller
                 $query->where('min_salary', '>=', $minSalary)
                     ->where('max_salary', '<=', $maxSalary);
             }
-
-
         }
-
-
         $posts = $query->paginate();
-
-
         return view('applicant.index', [
             'posts' => $posts,
             'cities' => $arrCity,
@@ -103,7 +97,7 @@ class HomePageController extends Controller
             'searchRemote' => $searchRemote,
             'minSalary' => $minSalary,
             'maxSalary' => $maxSalary,
-            'user'=>$user
+            'user' => $user
         ]);
     }
 
@@ -117,25 +111,27 @@ class HomePageController extends Controller
         ]);
 
     }
+
     public function company($companyId)
     {
         $company = Company::query()
             ->find($companyId);
-        $posts =  Post::where('company_id', $companyId)->get();
+        $posts = Post::where('company_id', $companyId)->get();
 //        dd($posts);
         return view('applicant.company', [
             'company' => $company,
-            'posts'=>$posts,
+            'posts' => $posts,
         ]);
 
     }
 
     public function apply($postId)
     {
-        return view('applicant.apply',[
+        return view('applicant.apply', [
             'postId' => $postId
         ]);
     }
+
     public function appling(Request $request)
     {
         $post_id = $request->get('post_id');
@@ -144,7 +140,7 @@ class HomePageController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $path = $file->store('cv');
-            $user->link=$path;
+            $user->link = $path;
             $user->save();
 
             $apply = new Report();
@@ -155,5 +151,16 @@ class HomePageController extends Controller
         }
 
         return redirect()->route('applicant.index');
+    }
+
+    public function profile(Request $request)
+    {
+        $user = Session::get('user');
+        $posts= $user->posts;
+        return view("applicant.profile",[
+            'user' => $user,
+            'posts'=>$posts,
+        ]);
+
     }
 }
