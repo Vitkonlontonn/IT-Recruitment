@@ -11,17 +11,6 @@
                     <input type="file" name="csv" id="csv" class="d-none"
                            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
 
-{{--                    <nav>--}}
-{{--                        <ul class="pagination pagination-rounded mb-0" id="pagination">--}}
-{{--                            <li class="page-item">--}}
-{{--                                <a class="page-link" href="javascript: void(0);" aria-label="Previous">--}}
-
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-
-{{--                    </nav>--}}
-
                 </div>
                 <h4 class="page-title"> Posts</h4>
                 <div class="card-body">

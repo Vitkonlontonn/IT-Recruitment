@@ -37,3 +37,13 @@ Route::group([
 ], static function () {
     Route::post('/store', [CompanyController::class, 'store'])->name('store');
 });
+
+Route::group([
+    'as' => 'applies.',
+    'prefix' => 'applies',
+], static function () {
+    Route::get('/', [\App\Http\Controllers\Admin\ApplyController::class, 'index'])->name('index');
+    Route::get('/approve', [\App\Http\Controllers\Admin\ApplyController::class, 'approve'])->name('approve');
+    Route::get('/view', [\App\Http\Controllers\Admin\ApplyController::class, 'view'])->name('view');
+
+});

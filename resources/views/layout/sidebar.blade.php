@@ -48,6 +48,9 @@
                                         <li>
                                             <a href="{{route('admin.posts.index')}}">Posts</a>
                                         </li>
+                                        <li>
+                                            <a href="{{route('admin.applies.index')}}">Apply</a>
+                                        </li>
 
                                     </ul>
                                 </li>

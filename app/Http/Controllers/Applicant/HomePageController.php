@@ -146,7 +146,7 @@ class HomePageController extends Controller
             $path = $file->store('cv');
             $user->link=$path;
             $user->save();
-            
+
             $apply = new Report();
             $apply->user_id = $user->id;
             $apply->reported_id = $post_id;
