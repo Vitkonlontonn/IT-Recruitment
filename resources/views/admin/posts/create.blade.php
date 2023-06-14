@@ -183,6 +183,7 @@
 
     <script>
 
+
         function successNotification(message)
         {
             $.toast({
@@ -270,11 +271,11 @@
             $("#modal-company").modal("hide");
             if(type=='company')
             {
-                successNotification('Da them cong ty thanh cong')
+                successNotification('Successful')
             }
             if(type=='post')
             {
-                successNotification('Da them bai dang thanh cong')
+                successNotification('Successful')
             }
 
 
@@ -314,7 +315,7 @@
 
 
         $(document).ready(async function () {
-            $("#text-requirement").summernote();
+
             $("#select-city").select2();
             $("#city").select2();
             const response = await fetch('{{ asset('locations/index.json') }}');

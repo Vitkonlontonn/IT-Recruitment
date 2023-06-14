@@ -14,7 +14,7 @@
     </style>
 @endpush
 @section('content')
-    <h1>{{$post->id}}</h1>
+    <h2>Edit</h2>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -30,7 +30,8 @@
                         </div>
                         <div class="form-group">
                             <label>Language (*)</label>
-                            <select class="form-control" multiple name="languages[]" id='select-language' required></select>
+                            <select class="form-control" multiple name="languages[]" id='select-language' required>
+                            </select>
                         </div>
                         <div class="form-row select-location">
                             <div class="form-group col-6">
@@ -278,7 +279,7 @@
             }
             if(type=='post')
             {
-                successNotification('Da them bai dang thanh cong')
+                successNotification('Update successful')
             }
 
 

@@ -40,11 +40,16 @@ class ApplyController extends Controller
 
     public function view(request $request)
     {
+
         $id = $request->query('id');
+
         $report = Report::find($id);
         $post = Post::find($report->reported_id);
+
         $company = Company::find($post->company_id);
+
         $user = User::find($report->user_id);
+
         return view("admin.applies.view", [
             'report' => $report,
             'post' => $post,

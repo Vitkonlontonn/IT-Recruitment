@@ -28,8 +28,8 @@
                             </li>
                             @isset($post->number_applicants)
                                 <li>
-                                    <i class="material-icons text-danger">close</i>
-                                    Private Messages
+
+                                    <b>{{$post->number_applicants}}</b> applicants
                                 </li>
                             @endisset
 
@@ -69,8 +69,52 @@
                                 </a>
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in">
-                                <div class="panel-body">
+                                <div class="panel-body" >
                                     {{ $post->requirement }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endisset
+            @isset($post->min_salary)
+                <div id="acordeon">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-border panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                   aria-expanded="true" aria-controls="collapseOne">
+                                    <h4 class="panel-title">
+                                        Salary
+                                        <i class="material-icons">keyboard_arrow_down</i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body" >
+                                    {{ $post->min_salary }}$ - {{$post->max_salary}}$
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endisset
+            @isset($post->end_date)
+                <div id="acordeon">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-border panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                   aria-expanded="true" aria-controls="collapseOne">
+                                    <h4 class="panel-title">
+                                        Date
+                                        <i class="material-icons">keyboard_arrow_down</i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body" >
+                                    {{ $post->start_date }} - {{$post->end_date }}
                                 </div>
                             </div>
                         </div>
@@ -91,3 +135,5 @@
 
 
 @endsection
+
+

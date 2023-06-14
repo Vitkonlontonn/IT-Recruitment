@@ -36,8 +36,7 @@
                                     <option selected>All</option>
                                     @foreach($cities as $city)
                                         <option
-                                            @if($city===$selectedCity) selected @endif
-                                        >
+                                            @if((string)$city===$selectedCity) selected @endif>
                                             {{$city}}
                                         </option>
                                     @endforeach
@@ -90,7 +89,7 @@
                                     <img src="{{$each->avatar}}" height="50" width="50">
                                 </td>
                                 <td>
-                                    {{$each->name}} - {{$each->getGenderNameAttribute()}}
+                                    {{$each->name}}
                                     <br>
                                     <a href="mailto:{{ $each->email }} ">
                                         {{$each->email}}
