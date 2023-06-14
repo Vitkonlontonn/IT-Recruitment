@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomePageController extends Controller
 {
     public function index(Request $request)
     {
 //        $user = $request->session()->get('user');
-
+        $user= Session::get('user');
         $searchCities = $request->get('cities', []);
         $arrCity = cache()->remember(
             SystemCacheKeyEnum::POST_CITIES,
@@ -100,6 +101,7 @@ class HomePageController extends Controller
             'searchRemote' => $searchRemote,
             'minSalary' => $minSalary,
             'maxSalary' => $maxSalary,
+            'user'=>$user
         ]);
     }
 
@@ -124,5 +126,27 @@ class HomePageController extends Controller
             'posts'=>$posts,
         ]);
 
+    }
+
+    public function apply($postId)
+    {
+        return view('applicant.apply');
+    }
+    public function appling(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+
+//            $path = $file->store('cv');
+//
+            $fileName = $file->getClientOriginalName();
+            $fileExtension = $file->getClientOriginalExtension();
+
+            //Lưu file path thành link của người dùng đang đăng nhập
+
+//            dd($path);
+        }
+
+        return redirect()->route('applicant.index');
     }
 }

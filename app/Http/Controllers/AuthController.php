@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
@@ -22,17 +23,17 @@ class AuthController extends Controller
     public function loginning(Request $request)
     {
 
+
         $credentials = $request->only('email', 'password');
-
-
         if (Auth::attempt($credentials)) {
             $role = auth()->user()->role;
             $user = auth() -> user();
+            Session::put('user', $user);
 //            dd($user);
             $role= UserRoleEnum::getKey($role);
             $role= strtolower($role);
 //
-            $request->session()->put('user', $user);
+//            $request->session()->put('user', $user);
             return redirect()->route('applicant.index')
                 ->withSuccess('Signed in');
         }
@@ -138,6 +139,17 @@ class AuthController extends Controller
         return redirect()->route($user->get('role') . '.welcome');
     }
 
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Đăng xuất người dùng
+        Session::flush();
+        $request->session()->invalidate(); // Hủy bỏ session hiện tại
+        $request->session()->regenerateToken(); // Tạo lại CSRF token mới
+
+        return redirect('/'); // Chuyển hướng về trang chủ hoặc trang đăng nhập
+
+    }
+
     public function applicantWelcome()
     {
         return view('auth.applicant');
@@ -147,4 +159,5 @@ class AuthController extends Controller
     {
         return view('auth.hr');
     }
+
 }

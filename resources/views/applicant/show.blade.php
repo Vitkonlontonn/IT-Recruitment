@@ -2,13 +2,19 @@
 @section('content')
     <div class="row">
         <div class="col-md-6 col-sm-6">
-
             <div class="tab-content">
                 <div class="card card-pricing">
                     <div class="card-content">
                         <ul>
                             <li>
-                                {{ $post->remoteable }}
+                                <i class="material-icons text-success">
+                                    @if($post->remoteable)
+                                        check
+                                    @else
+                                        close
+                                    @endif
+                                </i>
+                                Remote
                             </li>
                             <li>
                                 <i class="material-icons text-success">
@@ -26,9 +32,9 @@
                                     Private Messages
                                 </li>
                             @endisset
-                            <li><i class="material-icons text-danger">close</i> Personal Brand</li>
+
                         </ul>
-                        <a href="#pablo" class="btn btn-primary btn-round">
+                        <a href="{{route('applicant.apply', $post->id)}}" class="btn btn-primary btn-round" id="btn-apply">
                             Apply
                         </a>
                     </div>
@@ -82,4 +88,6 @@
             @endisset
         </div>
     </div>
+
+
 @endsection

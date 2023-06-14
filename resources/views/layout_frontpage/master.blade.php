@@ -26,16 +26,11 @@
     <!-- section -->
     <div class="section">
         <div class="container">
-
-
             @yield('content')
-
         </div>
-    </div><!-- section -->
+    </div>
+</div>
 
-</div> <!-- end-main-raised -->
-
-<!-- section -->
 @include('layout_frontpage.footer')
 
 <!--   Core JS Files   -->

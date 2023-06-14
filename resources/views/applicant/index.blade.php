@@ -1,7 +1,6 @@
 @extends('layout_frontpage.master')
-
 @section('content')
-    <h1> </h1>
+    <h3>Hello {{$user->name}}</h3>
     <h2 class="section-title">Find what you need</h2>
     <div class="row">
     </div>
