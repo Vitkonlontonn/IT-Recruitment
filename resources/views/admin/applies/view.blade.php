@@ -32,7 +32,7 @@
                                     <li>
                                         <p class="mb-2"><span class="font-weight-bold mr-2">Name: </span> {{$user->name}}</p>
                                         <p class="mb-2"><span class="font-weight-bold mr-2">Email: </span> {{$user->email}}</p>
-                                        <p class="mb-2"><span class="font-weight-bold mr-2">CV: </span> </p>
+                                        <p class="mb-2"><span class="font-weight-bold mr-2">CV: </span><a href="{{$user->link}}">CV</a> </p>
                                         <p class="mb-0"><span class="font-weight-bold mr-2">Position:</span>{{$user->position}}</p>
                                     </li>
                                 </ul>
@@ -44,7 +44,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title mb-3">Company Info</h4>
+                                <h4 class="header-title mb-3">Company Infomation</h4>
 
                                 <div class="text-center">
                                     <i class="mdi mdi-office-building h2 text-muted"></i>

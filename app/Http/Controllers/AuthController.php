@@ -106,10 +106,15 @@ class AuthController extends Controller
             $user = User::create([
                 'email' => $request->get('email'),
                 'password' => $password,
-                'name' => $request->get('name')
+                'name' => $request->get('name'),
+                'phone' => $request->get('phone'),
+                'bio' => $request->get('bio'),
+                'city' => $request->get('city'),
             ]);
 
+
             Auth::login($user);
+            Session::put('user', $user);
             return redirect()->route('applicant.index');
 
         }

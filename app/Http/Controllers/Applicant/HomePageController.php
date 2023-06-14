@@ -127,8 +127,10 @@ class HomePageController extends Controller
 
     public function apply($postId)
     {
+        $user=Session::get('user');
         return view('applicant.apply', [
-            'postId' => $postId
+            'postId' => $postId,
+            'user'=>$user
         ]);
     }
 
@@ -136,30 +138,25 @@ class HomePageController extends Controller
     {
         $post_id = $request->get('post_id');
         $user = Session::get('user');
-
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $path = $file->store('cv');
-            $user->link = $path;
-            $user->save();
-
-            $apply = new Report();
-            $apply->user_id = $user->id;
-            $apply->reported_id = $post_id;
-            $apply->save();
-
-        }
-
+        $link = $request->file('link');
+        $user->link = $link;
+        $user->save();
+        $apply = new Report();
+        $apply->user_id = $user->id;
+        $apply->reported_id = $post_id;
+        $apply->save();
         return redirect()->route('applicant.index');
     }
 
     public function profile(Request $request)
     {
-        $user = Session::get('user');
-        $posts= $user->posts;
-        return view("applicant.profile",[
+        $user1 = Session::get('user');
+        $user=User::find($user1->id);
+        $posts = $user->posts;
+
+        return view("applicant.profile", [
             'user' => $user,
-            'posts'=>$posts,
+            'posts' => $posts,
         ]);
 
     }

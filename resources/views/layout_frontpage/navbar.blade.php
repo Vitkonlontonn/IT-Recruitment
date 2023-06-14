@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default navbar-fixed-top navbar-color-on-scroll navbar-transparent" color-on-scroll="100" id="sectionsNav">
+<nav class="navbar navbar-default navbar-fixed-top navbar-color-on-scroll navbar-transparent" color-on-scroll="100"
+     id="sectionsNav">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -21,14 +22,14 @@
                     </a>
                     <ul class="dropdown-menu dropdown-with-icons">
                         @if(isset($user))
-                        <li>
-                            <a href="applicant/profile/{{$user->id}}">
-                                <i class="material-icons">account_circle</i> Profile Page
-                            </a>
-                        </li>
+                            <li>
+                                <a href="applicant/profile/{{$user->id}}">
+                                    <i class="material-icons">account_circle</i> Profile Page
+                                </a>
+                            </li>
                         @endif
                         <li>
-                            <a href="../examples/blog-post.html">
+                            <a href="{{route('applicant.index')}}">
                                 <i class="material-icons">art_track</i> Jobs
                             </a>
                         </li>
@@ -40,10 +41,7 @@
                         </li>
 
 
-                <li class="button-container">
-                    <a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn btn-rose btn-round">
-                        <i class="material-icons"></i> Apply now
-                    </a>
+                    </ul>
                 </li>
             </ul>
         </div>

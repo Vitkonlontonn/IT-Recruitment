@@ -21,6 +21,7 @@ class Post extends Component
         $this->title = $post->job_title;
         $this->languages = implode(', ', $post->languages->pluck('name')->toArray());
         $this->company=$post->company;
+//        dd($this->company->logo);
 //        $this->logo= $this->company->logo;
 //   dd(($a));
         $this->location=$post->location;

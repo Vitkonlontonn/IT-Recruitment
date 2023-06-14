@@ -32,7 +32,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../presentation.html">Material Kit PRO</a>
+            <a class="navbar-brand" href="../presentation.html">Nhóm 6</a>
         </div>
 
 
@@ -55,9 +55,9 @@
                                     <i class="material-icons">timeline</i>
                                 </div>
                                 <div class="description">
-                                    <h4 class="info-title">Marketing</h4>
+                                    <h4 class="info-title">Acceptance</h4>
                                     <p class="description">
-                                        We've created the marketing campaign of the website. It was a very interesting collaboration.
+                                        We have created this Privacy Policy (the “Policy”) because we value users’ privacy. The Policy describes the types of information we may collect from you, or that you may provide, when you access jooble.org (the “Site”).
                                     </p>
                                 </div>
                             </div>
@@ -67,9 +67,10 @@
                                     <i class="material-icons">code</i>
                                 </div>
                                 <div class="description">
-                                    <h4 class="info-title">Fully Coded in HTML5</h4>
+                                    <h4 class="info-title">What information we collect</h4>
                                     <p class="description">
-                                        We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub.
+                                       Personal Information: First Name, Last Name, Email, Phone number, University, Resume, Payment Details, login, password. Voluntary Data: Information you voluntarily provide when you contact us for any reason, upload or otherwise send us.
+
                                     </p>
                                 </div>
                             </div>
@@ -79,9 +80,9 @@
                                     <i class="material-icons">group</i>
                                 </div>
                                 <div class="description">
-                                    <h4 class="info-title">Built Audience</h4>
+                                    <h4 class="info-title">Data security</h4>
                                     <p class="description">
-                                        There is also a Fully Customizable CMS Admin Dashboard for this product.
+                                        Personal information you provide to us is stored on a password protectedserver accessible only by administrator.
                                     </p>
                                 </div>
                             </div>
@@ -123,6 +124,24 @@
 											</span>
                                         <input name="password" type="password" placeholder="Password..." class="form-control" />
                                     </div>
+                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="material-icons">phone</i>
+											</span>
+                                        <input name="phone" type="text" placeholder="Phone..." class="form-control" />
+                                    </div>
+                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="material-icons">      </i>
+											</span>
+                                        <input name="city" type="text" placeholder="City..." class="form-control" />
+                                    </div>
+                                    <div class="input-group">
+											<span class="input-group-addon">
+												<i class="material-icons">      </i>
+											</span>
+                                        <textarea name="bio" placeholder="Bio..." class="form-control" ></textarea>
+                                    </div>
 
                                     <!-- If you want to add a checkbox to this form, uncomment this code -->
 
@@ -145,37 +164,7 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <nav class="pull-left">
-                <ul>
-                    <li>
-                        <a href="http://www.creative-tim.com">
-                            Creative Tim
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://presentation.creative-tim.com">
-                            About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://blog.creative-tim.com">
-                            Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.creative-tim.com/license">
-                            Licenses
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright pull-right">
-                &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com" target="_blank">Creative Tim</a>
-            </div>
-        </div>
-    </footer>
+    @extends('layout_frontpage.footer')
 
 </div>
 
@@ -208,6 +197,6 @@
 <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
 <!--    Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc    -->
-<script src="{{asset('js/material-kit.js?v=1.2.1')}}" type="text/javascript"></script>
+<script src="{{asset('js/material-kit.js')}}" type="text/javascript"></script>
 </html>
 

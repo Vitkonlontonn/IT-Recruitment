@@ -36,7 +36,7 @@
                 <div class="col-xs-6 col-xs-offset-3">
                     <div class="profile">
                         <div class="avatar">
-                            <img src="{{$user->avatar}}" alt="Circle Image"
+                            <img src="https://static.vecteezy.com/system/resources/previews/013/042/571/original/default-avatar-profile-icon-social-media-user-photo-in-flat-style-vector.jpg" alt="Circle Image"
                                  class="img-circle img-responsive img-raised">
                         </div>
                         <div class="name">
@@ -71,7 +71,7 @@
                                 <li class="active">
                                     <a href="#work" role="tab" data-toggle="tab">
                                         <i class="material-icons">palette</i>
-                                        Work
+                                        Job Apply
                                     </a>
                                 </li>
                                 <li>
@@ -101,10 +101,13 @@
                                              style="background-image: url('https://icons-for-free.com/iconfiles/png/512/case+job+work+icon-1320185594726714045.png')">
                                             <a href="#pablo"></a>
                                             <div class="card-content">
-                                                <label class="label label-primary">Spring 2016</label>
+                                                <label class="label label-primary">IT 2023</label>
                                                 <a href="#pablo">
                                                     <h3 class="card-title">{{$post->job_title}}</h3>
                                                 </a>
+
+                                                <h5></h5>
+
                                             </div>
                                         </div>
                                     </div>
@@ -113,17 +116,10 @@
                             </div>
                         </div>
                         <div class="col-md-2 col-md-offset-1 stats">
-                            <h4 class="title">Stats</h4>
-                            <ul class="list-unstyled">
-                                <li><b>60</b> Products</li>
-                                <li><b>4</b> Collections</li>
-                                <li><b>331</b> Influencers</li>
-                                <li><b>1.2K</b> Likes</li>
-                            </ul>
+
                             <hr/>
-                            <h4 class="title">About his Work</h4>
-                            <p class="description">French luxury footwear and fashion. The footwear has incorporated
-                                shiny, red-lacquered soles that have become his signature.</p>
+                            <h4 class="title">About Work</h4>
+                            <p class="description">Information technology is building communications networks for a company, safeguarding data and information, creating and administering databases, helping employees troubleshoot problems with their computers or mobile devices, or doing a range of other work to ensure the efficiency and security of business information ...</p>
                             <hr/>
                             <h4 class="title">Focus</h4>
                             <span class="label label-primary">Footwear</span>
@@ -136,19 +132,18 @@
                             <div class="card card-profile card-plain">
                                 <div class="col-md-5">
                                     <div class="card-image">
-                                        <a href="#pablo">
-                                            <img class="img" src="../assets/img/faces/card-profile2-square.jpg"/>
-                                        </a>
+{{--                                        <a href="#pablo">--}}
+{{--                                            <img class="img" src="../assets/img/faces/card-profile2-square.jpg"/>--}}
+{{--                                        </a>--}}
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="card-content">
-                                        <h4 class="card-title">George West</h4>
-                                        <h6 class="category text-muted">Model/DJ</h6>
+                                        <h4 class="card-title">Information</h4>
+                                        <h6 class="category text-muted">{{$user->phone}}</h6>
+                                        <h6 class="category text-muted">{{$user->email}}</h6>
+                                        <h6 class="category text-muted">{{$user->city}}</h6>
 
-                                        <p class="card-description">
-                                            I love you like Kanye loves Kanye.
-                                        </p>
                                     </div>
                                 </div>
                             </div>

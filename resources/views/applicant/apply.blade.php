@@ -4,20 +4,12 @@
         <div class="media-body">
             <form class="form" action="{{route('applicant.appling')}}" enctype="multipart/form-data" method="post">
                 @csrf
-                <div class="row">
                     <input type="hidden" name="post_id" value="{{$postId}}">
-                    <div class="form-group form-file-upload is-empty is-fileinput">
-                        <input type="file" name="file" id="inputFile2" multiple="">
-                        <div class="input-group">
-                            <input  type="text" readonly="" class="form-control" placeholder="    Your CV">
-                            <span class="input-group-btn input-group-s">
-										<button type="button" class="btn btn-just-icon btn-round btn-primary">
-											<i class="material-icons">attach_file</i>
-										</button>
-							</span>
-                        </div>
-                        <span class="material-input"></span></div>
-                </div>
+                    <div class="form-group is-empty">
+                        <input type="text" value="{{$user->link}}" placeholder="Your link (CV, Resume or Portfolio) " class="form-control">
+                        <span class="material-input"></span>
+                    </div>
+
                 <br>
 
                 <div class="media-footer">

@@ -9,26 +9,7 @@
                     <p> Lê Thị Thùy Dương - B20DCCN159 </p>
                 </div>
 
-                <div class="col-md-4">
-                    <h5>Social Feed</h5>
-                    <div class="social-feed">
 
-                        <div class="feed-line">
-                            <i class="fa fa-twitter"></i>
-                            <p> </p>
-                        </div>
-                        <div class="feed-line">
-                            <i class="fa fa-facebook-square"></i>
-                            <p> </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <h5>Instagram Feed</h5>
-
-
-                </div>
             </div>
         </div>
 

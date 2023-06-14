@@ -2,32 +2,34 @@
     <div class="rotating-card-container manual-flip" style="height: 328.875px; margin-bottom: 30px;">
         <div class="card card-rotate">
             <div class="front truncate" style="min-height: 328.875px;">
-                <div class="card-content">
-                    <h5 class="category-social text-success">
+                <div class="card-content col-3">
+                    <h6 class="category-social text-success">
                         <i class="fa fa-newspaper-o"></i> {{ $title }}
-                    </h5>
-                    <h4 class="card-title">
+                    </h6>
+                    <h6 class="card-title">
                         <a href="#pablo">
                             {{ $languages }}
-
                         </a>
-                    </h4>
+                    </h6>
                     <p class="card-description">
-
                     </p>
-                    <div class="footer" style="display: flex; align-items: center; justify-content: space-between">
-                        <div class="author" >
-                            <a href="#pablo">
-                                <img src="https://advnlaw.vn/upload/news/unnamed-5410.png" class="avatar img-raised">
-                                <span>{{ $company -> name }}</span>
-                                <div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 1131px; top: 16561px; background-color: rgb(60, 72, 88); transform: scale(12.75);"></div></div>
-                            </a>
-                        </div>
-                        <p class="card-description">
-                            {{$location}}
-                            <br>
+                    <div class="footer" style=" align-items: center; justify-content: space-between">
+                        <div>
+                            <p class="card-description">
+                                <b>{{ $company -> name }}</b>
 
-                        </p>
+                            </p>
+                            <br>
+                        </div>
+                        <br>
+                        <div class="author" >
+
+                                <span>{{$location}}</span>
+
+                        </div>
+                        <div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 1131px; top: 16561px; background-color: rgb(60, 72, 88); transform: scale(12.75);"></div></div>
+
+                        <br>
                         <button type="button" name="button" class="btn btn-sm btn-success btn-fill btn-round btn-rotate">
                             <i class="material-icons">refresh</i>
                         </button>
@@ -61,7 +63,7 @@
                             <i class="fa fa-facebook"></i>
                         </a>
                         <br>
-                        {{$part_time}}
+                        {{$part_time}} -
                         {{$remote}}
                     </div>
                     <br>

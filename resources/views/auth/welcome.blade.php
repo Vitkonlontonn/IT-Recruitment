@@ -22,8 +22,6 @@
 
 <body class="landing-page">
 @include('layout_frontpage.navbar')
-
-
 <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/img/bg8.jpg');">
     <div class="container">
         <div class="row">
@@ -44,8 +42,12 @@
         <div class="section text-center">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="title">Let's talk product</h2>
-                    <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
+                    <h2 class="title">Your new job starts here.</h2>
+                    <h5 class="description">We have thousands of jobs across the country. Whether you're looking for a remote job or a job near you, Adecco is here to help you find the job that is right for you.
+
+                        We have work-from-home jobs, go-to-work jobs, and everything in between.
+
+                        Use our 2022 Pay Rate and Salary Calculator to see what your hard work is worth.</h5>
                 </div>
             </div>
 
@@ -57,7 +59,7 @@
                                 <i class="material-icons">chat</i>
                             </div>
                             <h4 class="info-title">Free Chat</h4>
-                            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                            <p>We thought it would be impossible to find a Jack-of-all-Trades for our IT Director role, but IT-Recruitment found the perfect candidate who allowed our current director to travel without worrying about the corporate office team.</p>
                         </div>
                     </div>
 
@@ -66,8 +68,8 @@
                             <div class="icon icon-success">
                                 <i class="material-icons">verified_user</i>
                             </div>
-                            <h4 class="info-title">Verified Users</h4>
-                            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                            <h4 class="info-title">Lower Risk</h4>
+                            <p>We have the learning curve conquered. Reduce the risk associated with introducing new solutions or complex data migrations with our experienced experts.</p>
                         </div>
                     </div>
 
@@ -77,7 +79,7 @@
                                 <i class="material-icons">fingerprint</i>
                             </div>
                             <h4 class="info-title">Fingerprint</h4>
-                            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                            <p>The security of our web platform is our top priority. We implement top-notch security measures to ensure the safety of user information. Our system utilizes SSL/TLS encryption protocols to protect data transmission.</p>
                         </div>
                     </div>
                 </div>
@@ -89,22 +91,15 @@
 
             <div class="team">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <div class="card card-profile card-plain">
-                            <div class="col-md-5">
-                                <div class="card-image">
-                                    <a href="#pablo">
-                                        <img class="img" src="../assets/img/faces/card-profile1-square.jpg" />
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
+                            <div class="col-6">
                                 <div class="card-content">
-                                    <h4 class="card-title">Alec Thompson</h4>
-                                    <h6 class="category text-muted">Founder</h6>
+                                    <h4 class="card-title">Nguyễn Thị Hậu</h4>
+                                    <h6 class="category text-muted">B20DCCN234</h6>
 
                                     <p class="card-description">
-                                        Don't be scared of the truth because we need to restart the human foundation in truth...
+
                                     </p>
 
                                     <div class="footer">
@@ -117,26 +112,18 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <div class="card card-profile card-plain">
-                            <div class="col-md-5">
-                                <div class="card-image">
-                                    <a href="#pablo">
-                                        <img class="img" src="../assets/img/faces/card-profile6-square.jpg" />
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
+
+                            <div class="col-6">
                                 <div class="card-content">
-                                    <h4 class="card-title">Kendall Andrew</h4>
-                                    <h6 class="category text-muted">Graphic Designer</h6>
+                                    <h4 class="card-title">Lê Thị Thùy Dương</h4>
+                                    <h6 class="category text-muted">B20DCCN149</h6>
 
                                     <p class="card-description">
-                                        Don't be scared of the truth because we need to restart the human foundation in truth...
                                     </p>
 
                                     <div class="footer">
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-linkedin"><i class="fa fa-linkedin"></i></a>
                                         <a href="#pablo" class="btn btn-just-icon btn-simple btn-facebook"><i class="fa fa-facebook-square"></i></a>
                                         <a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
                                         <a href="#pablo" class="btn btn-just-icon btn-simple btn-google"><i class="fa fa-google"></i></a>
@@ -146,61 +133,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
-                        <div class="card card-profile card-plain">
-                            <div class="col-md-5">
-                                <div class="card-image">
-                                    <a href="#pablo">
-                                        <img class="img" src="../assets/img/faces/card-profile4-square.jpg" />
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-content">
-                                    <h4 class="card-title">Gina Andrew</h4>
-                                    <h6 class="category text-muted">Web Designer</h6>
 
-                                    <p class="card-description">
-                                        I love you like Kanye loves Kanye. Don't be scared of the truth.
-                                    </p>
-
-                                    <div class="footer">
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-youtube"><i class="fa fa-youtube-play"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-instagram"><i class="fa fa-instagram"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="card card-profile card-plain">
-                            <div class="col-md-5">
-                                <div class="card-image">
-                                    <a href="#pablo">
-                                        <img class="img" src="../assets/img/faces/card-profile2-square.jpg" />
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-content">
-                                    <h4 class="card-title">George West</h4>
-                                    <h6 class="category text-muted">Backend Hacker</h6>
-
-                                    <p class="card-description">
-                                        I love you like Kanye loves Kanye. Don't be scared of the truth because we need to restart the human foundation.
-                                    </p>
-
-                                    <div class="footer">
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-linkedin"><i class="fa fa-linkedin"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-facebook"><i class="fa fa-facebook-square"></i></a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-simple btn-google"><i class="fa fa-google"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -250,37 +183,7 @@
 
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <nav class="pull-left">
-            <ul>
-                <li>
-                    <a href="http://www.creative-tim.com">
-                        Creative Tim
-                    </a>
-                </li>
-                <li>
-                    <a href="http://presentation.creative-tim.com">
-                        About Us
-                    </a>
-                </li>
-                <li>
-                    <a href="http://blog.creative-tim.com">
-                        Blog
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.creative-tim.com/license">
-                        Licenses
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="copyright pull-right">
-            &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-        </div>
-    </div>
-</footer>
+@extends('layout_frontpage.footer')
 
 </body>
 <!--   Core JS Files   -->
